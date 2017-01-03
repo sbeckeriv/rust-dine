@@ -82,9 +82,11 @@ fn location(lat_long: LatLongParams) -> JSON<PlacesJSON> {
     };
     place.insert();
     let json = places.iter()
-        .map(|place| {
+        .map(|record| {
+            let ref place = record.0;
+            let ref inspections = record.1;
             PlaceDetailsJSON {
-                inspections: vec![],
+                inspections: inspections.clone(),
                 id: place.id,
                 name: place.name.clone(),
                 program_identifier: place.program_identifier.clone(),

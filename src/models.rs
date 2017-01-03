@@ -16,7 +16,8 @@ fn db() -> PgConnection {
     PgConnection::establish(&database_url).expect(&format!("Error connecting to {}", database_url))
 }
 
-#[derive(Serialize,Associations, Deserialize, Queryable, Insertable, FromForm, Debug, Clone)]
+#[derive(Serialize, Identifiable, Associations, Deserialize, Queryable, Insertable, FromForm, Debug, Clone)]
+#[belongs_to(Place)]
 #[table_name = "inspections"]
 pub struct Inspection {
     pub id: i32,
@@ -57,7 +58,7 @@ impl NewPlace {
     }
 }
 
-#[derive(Serialize,Associations, Deserialize, Queryable, FromForm, Debug, Clone)]
+#[derive(Serialize,Associations, Identifiable, Deserialize, Queryable, FromForm, Debug, Clone)]
 #[table_name = "places"]
 #[has_many(inspections)]
 pub struct Place {
@@ -77,13 +78,16 @@ impl Place {
                          sw_lat: f64,
                          min: Option<i64>,
                          max: Option<i64>)
-                         -> Vec<Place> {
-        all_places.filter(places::longitude.ge(sw_long)
+                         -> Vec<(Place, Vec<Inspection>)> {
+        let places = all_places.filter(places::longitude.ge(sw_long)
                 .and(places::longitude.le(ne_long))
                 .and(places::latitude.le(ne_lat))
                 .and(places::latitude.ge(sw_lat)))
             .order(places::id.desc())
             .load::<Place>(&db())
-            .unwrap()
+            .unwrap();
+        let inspection_list = Inspection::belonging_to(&places).load::<Inspection>(&db()).unwrap();
+        let grouped = inspection_list.grouped_by(&places);
+        places.into_iter().zip(grouped).collect::<Vec<_>>()
     }
 }
