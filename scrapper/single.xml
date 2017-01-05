@@ -1,0 +1,97 @@
+<business_inspection_violation><disclaimer>please note: a food establishment inspection is only a snapshot of the operation during a limited time. look at more than one inspection to get a better idea of the overall operation</disclaimer>
+<business>
+	<name>montlake boulevard market
+	</name>
+	<program_identifier>
+	</program_identifier>
+
+	<description>grocery store-no seating - risk category ii
+	</description>
+	<address>2605 22nd ave e
+	</address>
+	<city>seattle
+	</city>
+	<zip_code>98112
+	</zip_code>
+	<phone>(206) 323-4518
+	</phone>
+	<longitude>-122.3040574841
+	</longitude>
+	<latitude>47.6433946762
+	</latitude>
+	<inspection>
+		<inspection_date>11/07/2016
+		</inspection_date>
+		<inspection_business_name>montlake boulevard market
+		</inspection_business_name>
+		<inspection_type>consultation/education - field
+		</inspection_type>
+		<inspection_score>n/a
+		</inspection_score>
+		<inspection_result>complete
+		</inspection_result>
+		<inspection_closed_business>n
+		</inspection_closed_business>
+		<violation>
+			<violation_type>
+			</violation_type>
+			<violation_descr>
+			</violation_descr>
+			<violation_points>
+			</violation_points>
+		</violation>
+	</inspection>
+	<inspection>
+		<inspection_date>07/29/2016
+		</inspection_date>
+		<inspection_business_name>montlake boulevard market
+		</inspection_business_name>
+		<inspection_type>routine inspection/field review
+		</inspection_type>
+		<inspection_score>5
+		</inspection_score>
+		<inspection_result>unsatisfactory
+		</inspection_result>
+		<inspection_closed_business>n
+		</inspection_closed_business>
+		<violation>
+			<violation_type>red
+			</violation_type>
+			<violation_descr>2120 - proper cold holding temperatures ( 42 degrees f to 45 degrees f)
+			</violation_descr>
+			<violation_points>5
+			</violation_points>
+		</violation>
+	</inspection>
+	<inspection>
+		<inspection_date>11/23/2015
+		</inspection_date>
+		<inspection_business_name>montlake boulevard market
+		</inspection_business_name>
+		<inspection_type>routine inspection/field review
+		</inspection_type>
+		<inspection_score>15
+		</inspection_score>
+		<inspection_result>unsatisfactory
+		</inspection_result>
+		<inspection_closed_business>n
+		</inspection_closed_business>
+		<violation>
+			<violation_type>red
+			</violation_type>
+			<violation_descr>2110 - proper cold holding temperatures (greater than  45 degrees f)
+			</violation_descr>
+			<violation_points>10
+			</violation_points>
+		</violation>
+		<violation>
+			<violation_type>red
+			</violation_type>
+			<violation_descr>0200 - food worker cards current for all food workers; new food workers trained
+			</violation_descr>
+			<violation_points>5
+			</violation_points>
+		</violation>
+	</inspection>
+</business>
+</business_inspection_violation>

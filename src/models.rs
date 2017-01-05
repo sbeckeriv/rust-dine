@@ -2,10 +2,13 @@ use diesel;
 use diesel::types::*;
 use diesel::prelude::*;
 use diesel::pg::PgConnection;
+use chrono::{NaiveDate, NaiveDateTime};
 use dotenv::dotenv;
 use std::env;
 use schema::inspections;
 use schema::inspections::dsl::inspections as all_inspections;
+use schema::violations;
+use schema::violations::dsl::violations as all_violations;
 use schema::places;
 use schema::places::dsl::places as all_places;
 
@@ -16,15 +19,29 @@ fn db() -> PgConnection {
     PgConnection::establish(&database_url).expect(&format!("Error connecting to {}", database_url))
 }
 
-#[derive(Serialize, Identifiable, Associations, Deserialize, Queryable, Insertable, FromForm, Debug, Clone)]
+#[derive(Serialize, Identifiable, Associations, Deserialize, Queryable, Insertable, Debug, Clone)]
+#[belongs_to(Inspection)]
+#[table_name="violations"]
+pub struct Violation {
+    pub id: i32,
+    pub inspection_id: i32,
+    pub kind: String,
+    pub points: i32,
+    pub description: String,
+}
+
+#[derive(Serialize, Identifiable, Associations, Deserialize, Queryable, Insertable,  Debug, Clone)]
 #[belongs_to(Place)]
 #[table_name = "inspections"]
 pub struct Inspection {
     pub id: i32,
     pub place_id: i32,
     pub title: String,
-    pub body: String,
     pub published: bool,
+    pub closed: bool,
+    pub inspected_at: NaiveDateTime,
+    pub inspection_type: String,
+    pub inspection_score: i32,
 }
 
 impl Inspection {
@@ -58,7 +75,7 @@ impl NewPlace {
     }
 }
 
-#[derive(Serialize,Associations, Identifiable, Deserialize, Queryable, FromForm, Debug, Clone)]
+#[derive(Serialize,Associations, Identifiable, Deserialize, Queryable, Debug, Clone)]
 #[table_name = "places"]
 #[has_many(inspections)]
 pub struct Place {

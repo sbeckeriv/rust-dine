@@ -4,6 +4,7 @@
 extern crate rocket;
 extern crate rocket_contrib;
 extern crate serde_json;
+extern crate chrono;
 extern crate dotenv;
 extern crate tera;
 #[macro_use]
@@ -19,6 +20,7 @@ use rocket_contrib::{Template, JSON};
 use std::collections::HashMap;
 use std::sync::Mutex;
 use tera::Context;
+use chrono::{NaiveDate, NaiveDateTime};
 
 pub mod schema;
 pub mod models;
@@ -46,8 +48,20 @@ struct LatLongParams {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+struct InspectionJSON {
+    pub violations: Vec<models::Violation>,
+    pub id: i32,
+    pub place_id: i32,
+    pub title: String,
+    pub closed_bool: String,
+    pub inspected_at: NaiveDateTime,
+    pub inspection_type: String,
+    pub inspection_score: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 struct PlaceDetailsJSON {
-    pub inspections: Vec<models::Inspection>,
+    pub inspections: Vec<InspectionJSON>,
     pub id: i32,
     pub name: String,
     pub program_identifier: String,
@@ -86,7 +100,7 @@ fn location(lat_long: LatLongParams) -> JSON<PlacesJSON> {
             let ref place = record.0;
             let ref inspections = record.1;
             PlaceDetailsJSON {
-                inspections: inspections.clone(),
+                inspections: vec![],
                 id: place.id,
                 name: place.name.clone(),
                 program_identifier: place.program_identifier.clone(),
