@@ -70,8 +70,8 @@ pub struct NewPlace {
     pub latitude: f64,
 }
 impl NewPlace {
-    pub fn insert(&self) -> bool {
-        diesel::insert(self).into(places::table).execute(&db()).is_ok()
+    pub fn insert(&self) -> Option<Place> {
+        diesel::insert(self).into(places::table).get_result::<Place>(&db()).ok()
     }
 }
 
@@ -89,16 +89,27 @@ pub struct Place {
     pub latitude: f64,
 }
 impl Place {
+    pub fn find_from_xml(business: &BusinessXml) -> Option<Place> {
+
+        all_places.filter(places::address.eq(business.address.unwrap_or("".to_string()))
+                .and(places::name.eq(business.name.unwrap_or("".to_string())))
+                .and(places::name.eq(business.program_identifier.unwrap_or("".to_string()))))
+            .first::<Place>(&db())
+            .ok()
+    }
+
     pub fn find_or_create(business: &BusinessXml) -> Place {
+        let place = Place::find_from_xml(&business);
         let mut place = NewPlace {
-            name: business.name,
-            program_identifier: business.program_identifier,
+            name: business.name.unwrap_or("".to_string()),
+            program_identifier: business.program_identifier.unwrap_or("".to_string()),
             description: business.description,
             phone: business.phone,
-            address: business.address,
-            longitude: business.longitude,
-            latitude: business.latitude,
+            address: business.address.unwrap_or("".to_string()),
+            longitude: business.longitude.unwrap_or("".to_string()).parse::<f64>().unwrap_or(0.0),
+            latitude: business.latitude.unwrap_or("".to_string()).parse::<f64>().unwrap_or(0.0),
         };
+        place.insert();
     }
     pub fn in_the_bounds(sw_long: f64,
                          ne_long: f64,

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import SimpleMapPage  from './simple';
 import './index.css';
 import './main.css';
 import { withGoogleMap, GoogleMap,
@@ -21,7 +22,10 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
   </GoogleMap>
 ));
 // Then, render it:
-
+ReactDOM.render(
+< SimpleMapPage/>,
+  document.getElementById('root'));
+/*
 ReactDOM.render(
   <GettingStartedGoogleMap
     containerElement={
@@ -36,4 +40,5 @@ ReactDOM.render(
   />,
   document.getElementById('root')
 );
+*/
 

@@ -3,12 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2017": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
     "react-scripts": "0.8.4"
   },
   "dependencies": {
+    "babel-polyfill": "^6.20.0",
+    "babel-runtime": "^6.20.0",
     "google-map-react": "^0.22.3",
     "lodash": "^4.17.4",
     "react": "^15.4.2",
+    "react-addons": "^0.9.1-deprecated",
+    "react-controllables": "^0.6.0",
     "react-dom": "^15.4.2",
     "react-google-maps": "^6.0.1",
     "react-helmet": "^3.3.0"
