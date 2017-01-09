@@ -14,25 +14,25 @@ const Container = React.createClass({
     }
   },
 
+  debugJson: function(){
+    return [{"inspections":[],"id":8,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":7,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":6,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":5,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":4,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":3,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":2,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":1,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547}];
+  },
   getPlaces: function(mapProps, map) {
 			var bounds = map.getBounds();
+			var that=this;
 			if (bounds) {
 					var sw = bounds.getSouthWest();
 					var ne = bounds.getNorthEast();
 					var url = 'http://localhost:8000/location?sw_lat=' + sw.lat() + "&sw_long=" + sw.lng() + '&ne_lat=' + ne.lat() + "&ne_long=" + ne.lng();
-          this.setState({places:
-[{"inspections":[],"id":8,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":7,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":6,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":5,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":4,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":3,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":2,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":1,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547}]});
-return
 					fetch(url)
 					.then(function(response) {
 						return response.json()
 					}).then(function(json) {
-            this.setState({places: json.results});
+            that.setState({places: json.results});
 					}).catch(function(ex) {
 						console.log('parsing failed', ex)
 					})
 			}else{
-				var that=this;
 				setTimeout(function() {
 					that.getPlaces(mapProps, map)
 				},1000)

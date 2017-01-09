@@ -122,11 +122,8 @@ impl Inspection {
         let date_string = inspection.inspection_date.clone().unwrap_or("".to_string());
         let mut date_string = date_string.trim().to_string();
         date_string.push_str(" 7:15");
-
-        println!("{:?}", date_string);
         let inspection_date = NaiveDateTime::parse_from_str(&date_string, "%m/%d/%Y %H:%M")
             .unwrap_or(NaiveDate::from_ymd(1999, 9, 5).and_hms(23, 56, 4));
-        println!("{:?}", inspection_date);
         let record = Inspection::find_from_xml(place.id, &inspection_date);
         match record {
             Some(record) => record,
@@ -205,6 +202,16 @@ impl Place {
         match place {
             Some(place) => place,
             None => {
+                let lat = business.latitude
+                    .clone()
+                    .unwrap_or("".to_string())
+                    .parse::<f64>()
+                    .unwrap_or(0.0);
+                let long = business.longitude
+                    .clone()
+                    .unwrap_or("".to_string())
+                    .parse::<f64>()
+                    .unwrap_or(0.0);
                 let mut new_place = NewPlace {
                     name: business.name.clone().unwrap_or("".to_string()),
                     program_identifier: business.program_identifier
@@ -213,16 +220,8 @@ impl Place {
                     description: business.description.clone(),
                     phone: business.phone.clone(),
                     address: business.address.clone().unwrap_or("".to_string()),
-                    longitude: business.longitude
-                        .clone()
-                        .unwrap_or("".to_string())
-                        .parse::<f64>()
-                        .unwrap_or(0.0),
-                    latitude: business.latitude
-                        .clone()
-                        .unwrap_or("".to_string())
-                        .parse::<f64>()
-                        .unwrap_or(0.0),
+                    longitude: long,
+                    latitude: lat,
                 };
                 new_place.insert().unwrap()
             }
