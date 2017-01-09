@@ -19,6 +19,21 @@ fn db() -> PgConnection {
     PgConnection::establish(&database_url).expect(&format!("Error connecting to {}", database_url))
 }
 
+
+#[derive(Insertable, Debug, Clone)]
+#[table_name="violations"]
+pub struct NewViolation {
+    pub inspection_id: i32,
+    pub kind: String,
+    pub points: i32,
+    pub description: String,
+}
+impl NewViolation {
+    pub fn insert(&self) -> Option<Violation> {
+        diesel::insert(self).into(violations::table).get_result::<Violation>(&db()).ok()
+    }
+}
+
 #[derive(Serialize, Identifiable, Associations, Deserialize, Queryable, Insertable, Debug, Clone)]
 #[belongs_to(Inspection)]
 #[table_name="violations"]
@@ -28,6 +43,56 @@ pub struct Violation {
     pub kind: String,
     pub points: i32,
     pub description: String,
+}
+
+impl Violation {
+    pub fn find_from_xml(inspection_id: i32, violation: &ViolationXml) -> Option<Violation> {
+        all_violations.filter(
+            violations::kind.eq(violation.violation_type.clone().unwrap_or("".to_string()))
+                .and(violations::description.eq(violation.violation_descr.clone().unwrap_or("".to_string())))
+                .and(violations::inspection_id.eq(inspection_id))
+                .and(violations::points.eq(violation.violation_points.clone().unwrap_or("".to_string()) .parse::<i32>() .unwrap_or(0))))
+            .first::<Violation>(&db())
+            .ok()
+    }
+
+    pub fn find_or_create(inspection: &Inspection, violation: &ViolationXml) -> Violation {
+        let record = Violation::find_from_xml(inspection.id, &violation);
+        match record {
+            Some(record) => record,
+            None => {
+                let mut new_record = NewViolation {
+                    inspection_id: inspection.id,
+                    kind: violation.violation_type.clone().unwrap_or("".to_string()),
+                    description: violation.violation_descr.clone().unwrap_or("".to_string()),
+                    points: violation.violation_points
+                        .clone()
+                        .unwrap_or("".to_string())
+                        .parse::<i32>()
+                        .unwrap_or(0),
+                };
+                new_record.insert().unwrap()
+            }
+        }
+    }
+}
+
+#[derive(Insertable,  Debug, Clone)]
+#[table_name = "inspections"]
+pub struct NewInspection {
+    pub place_id: i32,
+    pub title: String,
+    pub published: bool,
+    pub closed: bool,
+    pub inspected_at: NaiveDateTime,
+    pub inspection_type: String,
+    pub inspection_score: i32,
+}
+
+impl NewInspection {
+    pub fn insert(&self) -> Option<Inspection> {
+        diesel::insert(self).into(inspections::table).get_result::<Inspection>(&db()).ok()
+    }
 }
 
 #[derive(Serialize, Identifiable, Associations, Deserialize, Queryable, Insertable,  Debug, Clone)]
@@ -45,6 +110,40 @@ pub struct Inspection {
 }
 
 impl Inspection {
+    pub fn find_from_xml(place_id: i32, inspection_date: &NaiveDateTime) -> Option<Inspection> {
+        all_inspections.filter(inspections::inspected_at.eq(inspection_date)
+                .clone()
+                .and(inspections::place_id.eq(place_id)))
+            .first::<Inspection>(&db())
+            .ok()
+    }
+
+    pub fn find_or_create(place: &Place, inspection: &InspectionXml) -> Inspection {
+        let date_string = inspection.inspection_date.clone().unwrap_or("".to_string());
+        let inspection_date = NaiveDateTime::parse_from_str(&date_string, "%m/%d/%Y")
+            .unwrap_or(NaiveDate::from_ymd(1999, 9, 5).and_hms(23, 56, 4));
+        let record = Inspection::find_from_xml(place.id, &inspection_date);
+        match record {
+            Some(record) => record,
+            None => {
+                let mut new_record = NewInspection {
+                    place_id: place.id,
+                    inspected_at: inspection_date,
+                    title: "".to_string(),
+                    published: true,
+                    closed: false,
+                    inspection_type: inspection.inspection_type.clone().unwrap_or("".to_string()),
+                    // pub inspected_at: NaiveDateTime,
+                    inspection_score: inspection.inspection_score
+                        .clone()
+                        .unwrap_or("".to_string())
+                        .parse::<i32>()
+                        .unwrap_or(0),
+                };
+                new_record.insert().unwrap()
+            }
+        }
+    }
     pub fn all() -> Vec<Inspection> {
         all_inspections.order(inspections::id.desc()).load::<Inspection>(&db()).unwrap()
     }
@@ -90,26 +189,39 @@ pub struct Place {
 }
 impl Place {
     pub fn find_from_xml(business: &BusinessXml) -> Option<Place> {
-
-        all_places.filter(places::address.eq(business.address.unwrap_or("".to_string()))
-                .and(places::name.eq(business.name.unwrap_or("".to_string())))
-                .and(places::name.eq(business.program_identifier.unwrap_or("".to_string()))))
+        all_places.filter(places::address.eq(business.address.clone().unwrap_or("".to_string()))
+                .and(places::name.eq(business.name.clone().unwrap_or("".to_string()))))
             .first::<Place>(&db())
             .ok()
     }
 
     pub fn find_or_create(business: &BusinessXml) -> Place {
         let place = Place::find_from_xml(&business);
-        let mut place = NewPlace {
-            name: business.name.unwrap_or("".to_string()),
-            program_identifier: business.program_identifier.unwrap_or("".to_string()),
-            description: business.description,
-            phone: business.phone,
-            address: business.address.unwrap_or("".to_string()),
-            longitude: business.longitude.unwrap_or("".to_string()).parse::<f64>().unwrap_or(0.0),
-            latitude: business.latitude.unwrap_or("".to_string()).parse::<f64>().unwrap_or(0.0),
-        };
-        place.insert();
+        match place {
+            Some(place) => place,
+            None => {
+                let mut new_place = NewPlace {
+                    name: business.name.clone().unwrap_or("".to_string()),
+                    program_identifier: business.program_identifier
+                        .clone()
+                        .unwrap_or("".to_string()),
+                    description: business.description.clone(),
+                    phone: business.phone.clone(),
+                    address: business.address.clone().unwrap_or("".to_string()),
+                    longitude: business.longitude
+                        .clone()
+                        .unwrap_or("".to_string())
+                        .parse::<f64>()
+                        .unwrap_or(0.0),
+                    latitude: business.latitude
+                        .clone()
+                        .unwrap_or("".to_string())
+                        .parse::<f64>()
+                        .unwrap_or(0.0),
+                };
+                new_place.insert().unwrap()
+            }
+        }
     }
     pub fn in_the_bounds(sw_long: f64,
                          ne_long: f64,
@@ -141,7 +253,7 @@ pub struct ViolationXml {
 
 #[derive(Debug,Display, Deserialize, PartialEq, Serialize)]
 pub struct InspectionXml {
-    pub Inspection_date: Option<String>,
+    pub inspection_date: Option<String>,
     pub inspection_business_name: Option<String>,
     pub inspection_type: Option<String>,
     pub inspection_score: Option<String>,

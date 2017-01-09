@@ -32,12 +32,24 @@ fn from_str(path: &str) -> Result<models::BusinessInspectionViolation, error::Er
 }
 
 fn main() {
-    let x = from_str("formatted.xml");
+    let x = from_str("single.xml");
     match x {
         Err(e) => println!("{}", e),
         Ok(xml) => {
             for business_xml in xml.business {
                 let business = models::Place::find_or_create(&business_xml);
+                println!("{:?}", business);
+                if business_xml.inspection.is_some() {
+                    for inspection_xml in business_xml.inspection.unwrap() {
+                        let inspection = models::Inspection::find_or_create(&business,
+                                                                            &inspection_xml);
+                        if inspection_xml.violation.is_some() {
+                            for violation_xml in inspection_xml.violation.unwrap() {
+                                models::Violation::find_or_create(&inspection, &violation_xml);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
