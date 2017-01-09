@@ -105,16 +105,22 @@ impl Place {
                          sw_lat: f64,
                          min: Option<i64>,
                          max: Option<i64>)
-                         -> Vec<(Place, Vec<Inspection>)> {
+                         -> Vec<(Place, Vec<(Inspection, Vec<Violation>)>)> {
+        let local_db = db();
         let places = all_places.filter(places::longitude.ge(sw_long)
                 .and(places::longitude.le(ne_long))
                 .and(places::latitude.le(ne_lat))
                 .and(places::latitude.ge(sw_lat)))
             .order(places::id.desc())
-            .load::<Place>(&db())
+            .load::<Place>(&local_db)
             .unwrap();
-        let inspection_list = Inspection::belonging_to(&places).load::<Inspection>(&db()).unwrap();
-        let grouped = inspection_list.grouped_by(&places);
-        places.into_iter().zip(grouped).collect::<Vec<_>>()
+        let inspection_list = Inspection::belonging_to(&places).load(&local_db).unwrap();
+        let violiations = Violation::belonging_to(&inspection_list).load(&local_db).unwrap();
+        let violiations: Vec<Vec<Violation>> = violiations.grouped_by(&inspection_list);
+        let inspections_and_violiations: Vec<Vec<(Inspection, Vec<Violation>)>> =
+            inspection_list.into_iter().zip(violiations).grouped_by(&places);
+        let results: Vec<(Place, Vec<(Inspection, Vec<Violation>)>)> =
+            places.into_iter().zip(inspections_and_violiations).collect();
+        results
     }
 }

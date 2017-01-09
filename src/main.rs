@@ -87,10 +87,8 @@ fn location(lat_long: LatLongParams) -> JSON<PlacesJSON> {
     let json = places.iter()
         .map(|record| {
             let ref place = record.0;
-            let ref inspections = record.1;
-            let grouped_inspections = models::Violation::for_inspections(inspections);
-
-            let inspections_json = grouped_inspections.iter()
+            let ref inspections_and_violations = record.1;
+            let inspections_json = inspections_and_violations.iter()
                 .map(|i_record| {
                     let ref i = i_record.0;
                     let ref violations = i_record.1;

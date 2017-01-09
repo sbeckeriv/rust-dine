@@ -1,0 +1,2551 @@
+{
+   "results":[
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":25476,
+                     "inspection_id":16276,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":16276,
+               "place_id":3245,
+               "closed":false,
+               "inspected_at":"2016-10-26T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":25477,
+                     "inspection_id":16277,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":16277,
+               "place_id":3245,
+               "closed":false,
+               "inspected_at":"2015-11-24T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            }
+         ],
+         "id":3245,
+         "name":"fitzgerald sports bar",
+         "program_identifier":"fitzgerald sports bar",
+         "description":"seating 13-50 - risk category iii",
+         "longitude":-122.3878733818,
+         "latitude":47.6714485002
+      },
+      {
+         "inspections":[
+
+         ],
+         "id":3232,
+         "name":"firehouse coffee",
+         "program_identifier":"firehouse coffee",
+         "description":"seating 13-50 - risk category iii",
+         "longitude":-122.3913429357,
+         "latitude":47.6689399852
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":22971,
+                     "inspection_id":14648,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":14648,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2016-10-03T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":22972,
+                     "inspection_id":14649,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":14649,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2015-12-07T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":22973,
+                     "inspection_id":14650,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":14650,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2015-09-21T07:15:00",
+               "inspection_type":"return inspection",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":22974,
+                     "inspection_id":14651,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1600 - proper cooling procedure"
+                  },
+                  {
+                     "id":22975,
+                     "inspection_id":14651,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  },
+                  {
+                     "id":22976,
+                     "inspection_id":14651,
+                     "kind":"red",
+                     "points":5,
+                     "description":"0200 - food worker cards current for all food workers; new food workers trained"
+                  }
+               ],
+               "id":14651,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2015-09-04T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":40
+            },
+            {
+               "violations":[
+                  {
+                     "id":22977,
+                     "inspection_id":14652,
+                     "kind":"red",
+                     "points":15,
+                     "description":"2000 - proper reheating procedures for hot holding"
+                  },
+                  {
+                     "id":22978,
+                     "inspection_id":14652,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4200 - food-contact surfaces maintained, clean, sanitized"
+                  }
+               ],
+               "id":14652,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2015-03-24T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":20
+            },
+            {
+               "violations":[
+                  {
+                     "id":22979,
+                     "inspection_id":14653,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":14653,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2014-10-27T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":22980,
+                     "inspection_id":14654,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  },
+                  {
+                     "id":22981,
+                     "inspection_id":14654,
+                     "kind":"red",
+                     "points":5,
+                     "description":"0200 - food worker cards current for all food workers; new food workers trained"
+                  }
+               ],
+               "id":14654,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2014-07-21T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":15
+            },
+            {
+               "violations":[
+                  {
+                     "id":22982,
+                     "inspection_id":14655,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2120 - proper cold holding temperatures ( 42 degrees f to 45 degrees f)"
+                  },
+                  {
+                     "id":22983,
+                     "inspection_id":14655,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"3300 - potential food contamination prevented during delivery,  preparation, storage, display"
+                  }
+               ],
+               "id":14655,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2014-03-06T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            }
+         ],
+         "id":2928,
+         "name":"el borracho",
+         "program_identifier":"el borracho",
+         "description":"seating 13-50 - risk category iii",
+         "longitude":-122.384274,
+         "latitude":47.668233
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":22280,
+                     "inspection_id":14208,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":14208,
+               "place_id":2841,
+               "closed":false,
+               "inspected_at":"2016-12-21T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":22281,
+                     "inspection_id":14209,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":14209,
+               "place_id":2841,
+               "closed":false,
+               "inspected_at":"2016-09-30T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":22282,
+                     "inspection_id":14210,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":14210,
+               "place_id":2841,
+               "closed":false,
+               "inspected_at":"2015-12-31T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":22283,
+                     "inspection_id":14211,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1600 - proper cooling procedure"
+                  }
+               ],
+               "id":14211,
+               "place_id":2841,
+               "closed":false,
+               "inspected_at":"2015-11-10T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":25
+            },
+            {
+               "violations":[
+                  {
+                     "id":22284,
+                     "inspection_id":14212,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":14212,
+               "place_id":2841,
+               "closed":false,
+               "inspected_at":"2015-09-22T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            }
+         ],
+         "id":2841,
+         "name":"duos co llc",
+         "program_identifier":"duos co llc",
+         "description":"caterer - risk category iii",
+         "longitude":-122.38700242,
+         "latitude":47.66839033
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":19487,
+                     "inspection_id":12399,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":12399,
+               "place_id":2459,
+               "closed":false,
+               "inspected_at":"2016-11-22T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":19488,
+                     "inspection_id":12400,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  }
+               ],
+               "id":12400,
+               "place_id":2459,
+               "closed":false,
+               "inspected_at":"2016-03-31T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            },
+            {
+               "violations":[
+                  {
+                     "id":19489,
+                     "inspection_id":12401,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":12401,
+               "place_id":2459,
+               "closed":false,
+               "inspected_at":"2015-11-17T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":19490,
+                     "inspection_id":12402,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":12402,
+               "place_id":2459,
+               "closed":false,
+               "inspected_at":"2015-04-30T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":19491,
+                     "inspection_id":12403,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1900 - no room temperature storage; proper use of time..."
+                  }
+               ],
+               "id":12403,
+               "place_id":2459,
+               "closed":false,
+               "inspected_at":"2014-11-25T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":25
+            },
+            {
+               "violations":[
+                  {
+                     "id":19492,
+                     "inspection_id":12404,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  }
+               ],
+               "id":12404,
+               "place_id":2459,
+               "closed":false,
+               "inspected_at":"2014-10-28T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            }
+         ],
+         "id":2459,
+         "name":"crisp creperie (kc168)",
+         "program_identifier":"crisp creperie @ route 425-449-9672",
+         "description":"mobile food unit - risk category ii",
+         "longitude":-122.38700242,
+         "latitude":47.66839033
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":15657,
+                     "inspection_id":9958,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":9958,
+               "place_id":1999,
+               "closed":false,
+               "inspected_at":"2016-07-21T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":15658,
+                     "inspection_id":9959,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":9959,
+               "place_id":1999,
+               "closed":false,
+               "inspected_at":"2015-04-17T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":15659,
+                     "inspection_id":9960,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":9960,
+               "place_id":1999,
+               "closed":false,
+               "inspected_at":"2015-01-14T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":15660,
+                     "inspection_id":9961,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":9961,
+               "place_id":1999,
+               "closed":false,
+               "inspected_at":"2014-12-22T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":15661,
+                     "inspection_id":9962,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1900 - no room temperature storage; proper use of time..."
+                  },
+                  {
+                     "id":15662,
+                     "inspection_id":9962,
+                     "kind":"red",
+                     "points":10,
+                     "description":"0600 - adequate handwashing facilities"
+                  }
+               ],
+               "id":9962,
+               "place_id":1999,
+               "closed":false,
+               "inspected_at":"2014-07-09T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":35
+            }
+         ],
+         "id":1999,
+         "name":"cheese wizards",
+         "program_identifier":"cheese wizards @ 210 nickerson st",
+         "description":"mobile food unit - risk category iii",
+         "longitude":-122.38700242,
+         "latitude":47.66839033
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":10485,
+                     "inspection_id":6651,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":6651,
+               "place_id":1321,
+               "closed":false,
+               "inspected_at":"2016-10-20T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":10486,
+                     "inspection_id":6652,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":6652,
+               "place_id":1321,
+               "closed":false,
+               "inspected_at":"2016-04-25T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":10487,
+                     "inspection_id":6653,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":6653,
+               "place_id":1321,
+               "closed":false,
+               "inspected_at":"2015-11-09T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":10488,
+                     "inspection_id":6654,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":6654,
+               "place_id":1321,
+               "closed":false,
+               "inspected_at":"2015-07-01T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":10489,
+                     "inspection_id":6655,
+                     "kind":"red",
+                     "points":25,
+                     "description":"0400 - hands washed as required"
+                  },
+                  {
+                     "id":10490,
+                     "inspection_id":6655,
+                     "kind":"red",
+                     "points":5,
+                     "description":"1400 - raw meats below and away from ready to eat food; species separated"
+                  }
+               ],
+               "id":6655,
+               "place_id":1321,
+               "closed":false,
+               "inspected_at":"2015-02-27T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":30
+            },
+            {
+               "violations":[
+                  {
+                     "id":10491,
+                     "inspection_id":6656,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":6656,
+               "place_id":1321,
+               "closed":false,
+               "inspected_at":"2014-09-08T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":10492,
+                     "inspection_id":6657,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":6657,
+               "place_id":1321,
+               "closed":false,
+               "inspected_at":"2014-06-03T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":10493,
+                     "inspection_id":6658,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":6658,
+               "place_id":1321,
+               "closed":false,
+               "inspected_at":"2014-01-21T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            }
+         ],
+         "id":1321,
+         "name":"boar's nest",
+         "program_identifier":"boar's nest",
+         "description":"seating 0-12 - risk category iii",
+         "longitude":-122.382683,
+         "latitude":47.669679
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":9411,
+                     "inspection_id":6053,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":6053,
+               "place_id":1212,
+               "closed":false,
+               "inspected_at":"2016-11-09T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":9412,
+                     "inspection_id":6054,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":6054,
+               "place_id":1212,
+               "closed":false,
+               "inspected_at":"2015-12-15T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":9413,
+                     "inspection_id":6055,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1600 - proper cooling procedure"
+                  }
+               ],
+               "id":6055,
+               "place_id":1212,
+               "closed":false,
+               "inspected_at":"2015-09-04T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":25
+            },
+            {
+               "violations":[
+                  {
+                     "id":9414,
+                     "inspection_id":6056,
+                     "kind":"red",
+                     "points":15,
+                     "description":"1300 - food contact surfaces and utensils used for raw meat thoroughly cleaned and sanitized.  no .."
+                  },
+                  {
+                     "id":9415,
+                     "inspection_id":6056,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  },
+                  {
+                     "id":9416,
+                     "inspection_id":6056,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"3400 - wiping cloths properly used, stored, proper sanitizer"
+                  },
+                  {
+                     "id":9417,
+                     "inspection_id":6056,
+                     "kind":"blue",
+                     "points":3,
+                     "description":"3700 - in-use utensils properly stored"
+                  }
+               ],
+               "id":6056,
+               "place_id":1212,
+               "closed":false,
+               "inspected_at":"2015-03-12T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":33
+            },
+            {
+               "violations":[
+                  {
+                     "id":9418,
+                     "inspection_id":6057,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  }
+               ],
+               "id":6057,
+               "place_id":1212,
+               "closed":false,
+               "inspected_at":"2014-09-24T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            },
+            {
+               "violations":[
+                  {
+                     "id":9419,
+                     "inspection_id":6058,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  }
+               ],
+               "id":6058,
+               "place_id":1212,
+               "closed":false,
+               "inspected_at":"2014-05-22T07:15:00",
+               "inspection_type":"return inspection",
+               "inspection_score":10
+            },
+            {
+               "violations":[
+                  {
+                     "id":9420,
+                     "inspection_id":6059,
+                     "kind":"red",
+                     "points":25,
+                     "description":"0500 - proper barriers used to prevent bare hand contact with ready to eat foods."
+                  },
+                  {
+                     "id":9421,
+                     "inspection_id":6059,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1900 - no room temperature storage; proper use of time..."
+                  },
+                  {
+                     "id":9422,
+                     "inspection_id":6059,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  },
+                  {
+                     "id":9423,
+                     "inspection_id":6059,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2200 - accurate thermometer provided and used ..."
+                  },
+                  {
+                     "id":9424,
+                     "inspection_id":6059,
+                     "kind":"red",
+                     "points":5,
+                     "description":"1400 - raw meats below and away from ready to eat food; species separated"
+                  },
+                  {
+                     "id":9425,
+                     "inspection_id":6059,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4100 - warewashing facilities properly installed,..."
+                  },
+                  {
+                     "id":9426,
+                     "inspection_id":6059,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4000 - food and non-food surfaces properly used and..."
+                  }
+               ],
+               "id":6059,
+               "place_id":1212,
+               "closed":false,
+               "inspected_at":"2014-05-02T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":80
+            },
+            {
+               "violations":[
+                  {
+                     "id":9427,
+                     "inspection_id":6060,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":6060,
+               "place_id":1212,
+               "closed":false,
+               "inspected_at":"2014-03-22T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            }
+         ],
+         "id":1212,
+         "name":"billy beach sushi & bar",
+         "program_identifier":"billy beach sushi & bar",
+         "description":"seating 13-50 - risk category iii",
+         "longitude":-122.38434693,
+         "latitude":47.6681695
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":8161,
+                     "inspection_id":5287,
+                     "kind":"red",
+                     "points":10,
+                     "description":"0600 - adequate handwashing facilities"
+                  }
+               ],
+               "id":5287,
+               "place_id":1062,
+               "closed":false,
+               "inspected_at":"2016-03-17T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            },
+            {
+               "violations":[
+                  {
+                     "id":8162,
+                     "inspection_id":5288,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":5288,
+               "place_id":1062,
+               "closed":false,
+               "inspected_at":"2015-08-12T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":8163,
+                     "inspection_id":5289,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":5289,
+               "place_id":1062,
+               "closed":false,
+               "inspected_at":"2015-06-10T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":8164,
+                     "inspection_id":5290,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":5290,
+               "place_id":1062,
+               "closed":false,
+               "inspected_at":"2014-11-29T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            }
+         ],
+         "id":1062,
+         "name":"beezneez gourmet sausage (kc287)",
+         "program_identifier":"beezneez gourmet sausages @ occidental park seattle",
+         "description":"mobile food unit - risk category ii",
+         "longitude":-122.38700242,
+         "latitude":47.66839033
+      },
+      {
+         "inspections":[
+
+         ],
+         "id":1009,
+         "name":"bauhaus ballard",
+         "program_identifier":"bauhaus ballard",
+         "description":"seating 51-150 - risk category ii",
+         "longitude":-122.382429,
+         "latitude":47.668393
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":6867,
+                     "inspection_id":4422,
+                     "kind":"red",
+                     "points":10,
+                     "description":"0600 - adequate handwashing facilities"
+                  }
+               ],
+               "id":4422,
+               "place_id":866,
+               "closed":false,
+               "inspected_at":"2016-03-26T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            },
+            {
+               "violations":[
+                  {
+                     "id":6868,
+                     "inspection_id":4423,
+                     "kind":"red",
+                     "points":10,
+                     "description":"0600 - adequate handwashing facilities"
+                  }
+               ],
+               "id":4423,
+               "place_id":866,
+               "closed":false,
+               "inspected_at":"2016-02-13T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            },
+            {
+               "violations":[
+                  {
+                     "id":6869,
+                     "inspection_id":4424,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4424,
+               "place_id":866,
+               "closed":false,
+               "inspected_at":"2016-01-16T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6870,
+                     "inspection_id":4425,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4425,
+               "place_id":866,
+               "closed":false,
+               "inspected_at":"2015-12-04T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6871,
+                     "inspection_id":4426,
+                     "kind":"red",
+                     "points":10,
+                     "description":"0600 - adequate handwashing facilities"
+                  }
+               ],
+               "id":4426,
+               "place_id":866,
+               "closed":false,
+               "inspected_at":"2015-08-13T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            },
+            {
+               "violations":[
+                  {
+                     "id":6872,
+                     "inspection_id":4427,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4400 - plumbing properly sized, installed,..."
+                  }
+               ],
+               "id":4427,
+               "place_id":866,
+               "closed":false,
+               "inspected_at":"2015-03-18T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":5
+            },
+            {
+               "violations":[
+                  {
+                     "id":6873,
+                     "inspection_id":4428,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4428,
+               "place_id":866,
+               "closed":false,
+               "inspected_at":"2014-10-23T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6874,
+                     "inspection_id":4429,
+                     "kind":"red",
+                     "points":5,
+                     "description":"0200 - food worker cards current for all food workers; new food workers trained"
+                  },
+                  {
+                     "id":6875,
+                     "inspection_id":4429,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4400 - plumbing properly sized, installed,..."
+                  },
+                  {
+                     "id":6876,
+                     "inspection_id":4429,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4000 - food and non-food surfaces properly used and..."
+                  },
+                  {
+                     "id":6877,
+                     "inspection_id":4429,
+                     "kind":"blue",
+                     "points":2,
+                     "description":"5000 - posting of permit; mobile establishment name..."
+                  }
+               ],
+               "id":4429,
+               "place_id":866,
+               "closed":false,
+               "inspected_at":"2014-08-21T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":17
+            },
+            {
+               "violations":[
+                  {
+                     "id":6878,
+                     "inspection_id":4430,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4200 - food-contact surfaces maintained, clean, sanitized"
+                  },
+                  {
+                     "id":6879,
+                     "inspection_id":4430,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4400 - plumbing properly sized, installed,..."
+                  },
+                  {
+                     "id":6880,
+                     "inspection_id":4430,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"3400 - wiping cloths properly used, stored, proper sanitizer"
+                  }
+               ],
+               "id":4430,
+               "place_id":866,
+               "closed":false,
+               "inspected_at":"2014-06-05T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":15
+            }
+         ],
+         "id":866,
+         "name":"balmar, the",
+         "program_identifier":"balmar, the",
+         "description":"seating 51-150 - risk category iii",
+         "longitude":-122.3863906965,
+         "latitude":47.668385404
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":6831,
+                     "inspection_id":4396,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4396,
+               "place_id":861,
+               "closed":false,
+               "inspected_at":"2015-05-07T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6832,
+                     "inspection_id":4397,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4397,
+               "place_id":861,
+               "closed":false,
+               "inspected_at":"2014-11-24T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            }
+         ],
+         "id":861,
+         "name":"balleywood creamery (kc291)",
+         "program_identifier":"balleywood creamery @ 206-920-5173",
+         "description":"mobile food unit - risk category ii",
+         "longitude":-122.38700242,
+         "latitude":47.66839033
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":6829,
+                     "inspection_id":4394,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4394,
+               "place_id":860,
+               "closed":false,
+               "inspected_at":"2016-11-23T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6830,
+                     "inspection_id":4395,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4395,
+               "place_id":860,
+               "closed":false,
+               "inspected_at":"2016-11-10T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            }
+         ],
+         "id":860,
+         "name":"ballard station public house",
+         "program_identifier":"ballard station public house",
+         "description":"seating 51-150 - risk category ii",
+         "longitude":-122.38639738,
+         "latitude":47.66895605
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":6812,
+                     "inspection_id":4386,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2120 - proper cold holding temperatures ( 42 degrees f to 45 degrees f)"
+                  },
+                  {
+                     "id":6813,
+                     "inspection_id":4386,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2300 - proper consumer advisory posted for raw ..."
+                  },
+                  {
+                     "id":6814,
+                     "inspection_id":4386,
+                     "kind":"blue",
+                     "points":3,
+                     "description":"4700 - garbage, refuse properly disposed; facilities..."
+                  },
+                  {
+                     "id":6815,
+                     "inspection_id":4386,
+                     "kind":"blue",
+                     "points":3,
+                     "description":"3000 - proper thawing methods used"
+                  }
+               ],
+               "id":4386,
+               "place_id":859,
+               "closed":false,
+               "inspected_at":"2016-09-20T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":16
+            },
+            {
+               "violations":[
+                  {
+                     "id":6816,
+                     "inspection_id":4387,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4200 - food-contact surfaces maintained, clean, sanitized"
+                  }
+               ],
+               "id":4387,
+               "place_id":859,
+               "closed":false,
+               "inspected_at":"2016-05-17T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":5
+            },
+            {
+               "violations":[
+                  {
+                     "id":6817,
+                     "inspection_id":4388,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4388,
+               "place_id":859,
+               "closed":false,
+               "inspected_at":"2015-12-07T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6818,
+                     "inspection_id":4389,
+                     "kind":"red",
+                     "points":15,
+                     "description":"2000 - proper reheating procedures for hot holding"
+                  },
+                  {
+                     "id":6819,
+                     "inspection_id":4389,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4200 - food-contact surfaces maintained, clean, sanitized"
+                  }
+               ],
+               "id":4389,
+               "place_id":859,
+               "closed":false,
+               "inspected_at":"2015-08-18T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":20
+            },
+            {
+               "violations":[
+                  {
+                     "id":6820,
+                     "inspection_id":4390,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  },
+                  {
+                     "id":6821,
+                     "inspection_id":4390,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2500 - toxic substances properly identified,..."
+                  },
+                  {
+                     "id":6822,
+                     "inspection_id":4390,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2300 - proper consumer advisory posted for raw ..."
+                  },
+                  {
+                     "id":6823,
+                     "inspection_id":4390,
+                     "kind":"blue",
+                     "points":2,
+                     "description":"4800 - physical facilities properly installed,..."
+                  }
+               ],
+               "id":4390,
+               "place_id":859,
+               "closed":false,
+               "inspected_at":"2015-02-19T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":27
+            },
+            {
+               "violations":[
+                  {
+                     "id":6824,
+                     "inspection_id":4391,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2300 - proper consumer advisory posted for raw ..."
+                  },
+                  {
+                     "id":6825,
+                     "inspection_id":4391,
+                     "kind":"red",
+                     "points":5,
+                     "description":"0200 - food worker cards current for all food workers; new food workers trained"
+                  }
+               ],
+               "id":4391,
+               "place_id":859,
+               "closed":false,
+               "inspected_at":"2014-11-20T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            },
+            {
+               "violations":[
+                  {
+                     "id":6826,
+                     "inspection_id":4392,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2300 - proper consumer advisory posted for raw ..."
+                  },
+                  {
+                     "id":6827,
+                     "inspection_id":4392,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4200 - food-contact surfaces maintained, clean, sanitized"
+                  }
+               ],
+               "id":4392,
+               "place_id":859,
+               "closed":false,
+               "inspected_at":"2014-08-21T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            },
+            {
+               "violations":[
+                  {
+                     "id":6828,
+                     "inspection_id":4393,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4393,
+               "place_id":859,
+               "closed":false,
+               "inspected_at":"2014-05-22T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            }
+         ],
+         "id":859,
+         "name":"ballard smoke shop",
+         "program_identifier":"ballard smoke shop",
+         "description":"seating 13-50 - risk category iii",
+         "longitude":-122.3862847767,
+         "latitude":47.6683128898
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":6730,
+                     "inspection_id":4342,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4200 - food-contact surfaces maintained, clean, sanitized"
+                  }
+               ],
+               "id":4342,
+               "place_id":852,
+               "closed":false,
+               "inspected_at":"2016-09-20T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":5
+            },
+            {
+               "violations":[
+                  {
+                     "id":6731,
+                     "inspection_id":4343,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4343,
+               "place_id":852,
+               "closed":false,
+               "inspected_at":"2015-12-16T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6732,
+                     "inspection_id":4344,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  },
+                  {
+                     "id":6733,
+                     "inspection_id":4344,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"3400 - wiping cloths properly used, stored, proper sanitizer"
+                  },
+                  {
+                     "id":6734,
+                     "inspection_id":4344,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4200 - food-contact surfaces maintained, clean, sanitized"
+                  }
+               ],
+               "id":4344,
+               "place_id":852,
+               "closed":false,
+               "inspected_at":"2015-09-21T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":20
+            },
+            {
+               "violations":[
+                  {
+                     "id":6735,
+                     "inspection_id":4345,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  }
+               ],
+               "id":4345,
+               "place_id":852,
+               "closed":false,
+               "inspected_at":"2015-05-28T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            },
+            {
+               "violations":[
+                  {
+                     "id":6736,
+                     "inspection_id":4346,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  }
+               ],
+               "id":4346,
+               "place_id":852,
+               "closed":false,
+               "inspected_at":"2014-09-25T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            },
+            {
+               "violations":[
+                  {
+                     "id":6737,
+                     "inspection_id":4347,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4347,
+               "place_id":852,
+               "closed":false,
+               "inspected_at":"2014-05-30T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6738,
+                     "inspection_id":4348,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4348,
+               "place_id":852,
+               "closed":false,
+               "inspected_at":"2014-01-02T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            }
+         ],
+         "id":852,
+         "name":"ballard mail & dispatch- sip & ship",
+         "program_identifier":"ballard mail & dispatch- sip & ship",
+         "description":"seating 13-50 - risk category iii",
+         "longitude":-122.3811484089,
+         "latitude":47.6689416432
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":6632,
+                     "inspection_id":4286,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4286,
+               "place_id":843,
+               "closed":false,
+               "inspected_at":"2016-08-09T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6633,
+                     "inspection_id":4287,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2120 - proper cold holding temperatures ( 42 degrees f to 45 degrees f)"
+                  },
+                  {
+                     "id":6634,
+                     "inspection_id":4287,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"3400 - wiping cloths properly used, stored, proper sanitizer"
+                  },
+                  {
+                     "id":6635,
+                     "inspection_id":4287,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"3300 - potential food contamination prevented during delivery,  preparation, storage, display"
+                  }
+               ],
+               "id":4287,
+               "place_id":843,
+               "closed":false,
+               "inspected_at":"2016-01-15T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":15
+            },
+            {
+               "violations":[
+                  {
+                     "id":6636,
+                     "inspection_id":4288,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4288,
+               "place_id":843,
+               "closed":false,
+               "inspected_at":"2015-10-19T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6637,
+                     "inspection_id":4289,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  }
+               ],
+               "id":4289,
+               "place_id":843,
+               "closed":false,
+               "inspected_at":"2015-05-27T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            },
+            {
+               "violations":[
+                  {
+                     "id":6638,
+                     "inspection_id":4290,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4290,
+               "place_id":843,
+               "closed":false,
+               "inspected_at":"2014-05-30T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6639,
+                     "inspection_id":4291,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4291,
+               "place_id":843,
+               "closed":false,
+               "inspected_at":"2014-01-27T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            }
+         ],
+         "id":843,
+         "name":"ballard coffee works",
+         "program_identifier":"ballard coffee works",
+         "description":"seating 13-50 - risk category ii",
+         "longitude":-122.38443975,
+         "latitude":47.66892411
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":6615,
+                     "inspection_id":4276,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"3200 - insects, rodents, animals not present; entrance controlled."
+                  }
+               ],
+               "id":4276,
+               "place_id":841,
+               "closed":false,
+               "inspected_at":"2016-01-22T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":5
+            },
+            {
+               "violations":[
+                  {
+                     "id":6616,
+                     "inspection_id":4277,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"3200 - insects, rodents, animals not present; entrance controlled."
+                  }
+               ],
+               "id":4277,
+               "place_id":841,
+               "closed":false,
+               "inspected_at":"2015-04-02T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":5
+            },
+            {
+               "violations":[
+                  {
+                     "id":6617,
+                     "inspection_id":4278,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4200 - food-contact surfaces maintained, clean, sanitized"
+                  },
+                  {
+                     "id":6618,
+                     "inspection_id":4278,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"3300 - potential food contamination prevented during delivery,  preparation, storage, display"
+                  }
+               ],
+               "id":4278,
+               "place_id":841,
+               "closed":false,
+               "inspected_at":"2014-08-07T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            }
+         ],
+         "id":841,
+         "name":"ballard beer company",
+         "program_identifier":"ballard beer company",
+         "description":"seating 13-50 - risk category i",
+         "longitude":-122.38430452,
+         "latitude":47.66894693
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":6604,
+                     "inspection_id":4270,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4270,
+               "place_id":840,
+               "closed":false,
+               "inspected_at":"2016-10-26T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6605,
+                     "inspection_id":4271,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4271,
+               "place_id":840,
+               "closed":false,
+               "inspected_at":"2015-08-10T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":6606,
+                     "inspection_id":4272,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  },
+                  {
+                     "id":6607,
+                     "inspection_id":4272,
+                     "kind":"red",
+                     "points":5,
+                     "description":"1200 - proper shellstock id; wild mushroom id;  parasite destruction procedures for fish"
+                  },
+                  {
+                     "id":6608,
+                     "inspection_id":4272,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"3400 - wiping cloths properly used, stored, proper sanitizer"
+                  },
+                  {
+                     "id":6609,
+                     "inspection_id":4272,
+                     "kind":"blue",
+                     "points":3,
+                     "description":"3700 - in-use utensils properly stored"
+                  }
+               ],
+               "id":4272,
+               "place_id":840,
+               "closed":false,
+               "inspected_at":"2015-03-18T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":23
+            },
+            {
+               "violations":[
+                  {
+                     "id":6610,
+                     "inspection_id":4273,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2120 - proper cold holding temperatures ( 42 degrees f to 45 degrees f)"
+                  }
+               ],
+               "id":4273,
+               "place_id":840,
+               "closed":false,
+               "inspected_at":"2014-10-06T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":5
+            },
+            {
+               "violations":[
+                  {
+                     "id":6611,
+                     "inspection_id":4274,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2120 - proper cold holding temperatures ( 42 degrees f to 45 degrees f)"
+                  },
+                  {
+                     "id":6612,
+                     "inspection_id":4274,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2300 - proper consumer advisory posted for raw ..."
+                  },
+                  {
+                     "id":6613,
+                     "inspection_id":4274,
+                     "kind":"red",
+                     "points":5,
+                     "description":"1200 - proper shellstock id; wild mushroom id;  parasite destruction procedures for fish"
+                  }
+               ],
+               "id":4274,
+               "place_id":840,
+               "closed":false,
+               "inspected_at":"2014-07-22T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":15
+            },
+            {
+               "violations":[
+                  {
+                     "id":6614,
+                     "inspection_id":4275,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":4275,
+               "place_id":840,
+               "closed":false,
+               "inspected_at":"2014-03-22T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            }
+         ],
+         "id":840,
+         "name":"ballard annex oyster house",
+         "program_identifier":"ballard annex oyster house",
+         "description":"seating 151-250 - risk category iii",
+         "longitude":-122.385003,
+         "latitude":47.667998
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":4556,
+                     "inspection_id":3036,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":3036,
+               "place_id":557,
+               "closed":false,
+               "inspected_at":"2016-11-08T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            }
+         ],
+         "id":557,
+         "name":"arashi ramen",
+         "program_identifier":"arashi ramen",
+         "description":"seating 13-50 - risk category iii",
+         "longitude":-122.3823148512,
+         "latitude":47.6677580711
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":4294,
+                     "inspection_id":2870,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1600 - proper cooling procedure"
+                  }
+               ],
+               "id":2870,
+               "place_id":523,
+               "closed":false,
+               "inspected_at":"2016-09-27T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":25
+            },
+            {
+               "violations":[
+                  {
+                     "id":4295,
+                     "inspection_id":2871,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1900 - no room temperature storage; proper use of time..."
+                  }
+               ],
+               "id":2871,
+               "place_id":523,
+               "closed":false,
+               "inspected_at":"2016-02-03T07:15:00",
+               "inspection_type":"return inspection",
+               "inspection_score":25
+            },
+            {
+               "violations":[
+                  {
+                     "id":4296,
+                     "inspection_id":2872,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1900 - no room temperature storage; proper use of time..."
+                  },
+                  {
+                     "id":4297,
+                     "inspection_id":2872,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  },
+                  {
+                     "id":4298,
+                     "inspection_id":2872,
+                     "kind":"red",
+                     "points":5,
+                     "description":"1400 - raw meats below and away from ready to eat food; species separated"
+                  },
+                  {
+                     "id":4299,
+                     "inspection_id":2872,
+                     "kind":"blue",
+                     "points":3,
+                     "description":"3000 - proper thawing methods used"
+                  }
+               ],
+               "id":2872,
+               "place_id":523,
+               "closed":false,
+               "inspected_at":"2016-01-21T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":43
+            },
+            {
+               "violations":[
+                  {
+                     "id":4300,
+                     "inspection_id":2873,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":2873,
+               "place_id":523,
+               "closed":false,
+               "inspected_at":"2015-08-21T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":4301,
+                     "inspection_id":2874,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2120 - proper cold holding temperatures ( 42 degrees f to 45 degrees f)"
+                  }
+               ],
+               "id":2874,
+               "place_id":523,
+               "closed":false,
+               "inspected_at":"2015-02-12T07:15:00",
+               "inspection_type":"return inspection",
+               "inspection_score":5
+            },
+            {
+               "violations":[
+                  {
+                     "id":4302,
+                     "inspection_id":2875,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1900 - no room temperature storage; proper use of time..."
+                  },
+                  {
+                     "id":4303,
+                     "inspection_id":2875,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1710 - proper hot holding temperatures (less than130 degrees)"
+                  },
+                  {
+                     "id":4304,
+                     "inspection_id":2875,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  }
+               ],
+               "id":2875,
+               "place_id":523,
+               "closed":false,
+               "inspected_at":"2015-01-28T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":60
+            },
+            {
+               "violations":[
+                  {
+                     "id":4305,
+                     "inspection_id":2876,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  },
+                  {
+                     "id":4306,
+                     "inspection_id":2876,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"3400 - wiping cloths properly used, stored, proper sanitizer"
+                  }
+               ],
+               "id":2876,
+               "place_id":523,
+               "closed":false,
+               "inspected_at":"2014-09-12T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":15
+            },
+            {
+               "violations":[
+                  {
+                     "id":4307,
+                     "inspection_id":2877,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":2877,
+               "place_id":523,
+               "closed":false,
+               "inspected_at":"2014-05-30T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":4308,
+                     "inspection_id":2878,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":2878,
+               "place_id":523,
+               "closed":false,
+               "inspected_at":"2014-02-11T07:15:00",
+               "inspection_type":"return inspection",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":4309,
+                     "inspection_id":2879,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1600 - proper cooling procedure"
+                  },
+                  {
+                     "id":4310,
+                     "inspection_id":2879,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1710 - proper hot holding temperatures (less than130 degrees)"
+                  },
+                  {
+                     "id":4311,
+                     "inspection_id":2879,
+                     "kind":"red",
+                     "points":15,
+                     "description":"1300 - food contact surfaces and utensils used for raw meat thoroughly cleaned and sanitized.  no .."
+                  },
+                  {
+                     "id":4312,
+                     "inspection_id":2879,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2200 - accurate thermometer provided and used ..."
+                  },
+                  {
+                     "id":4313,
+                     "inspection_id":2879,
+                     "kind":"red",
+                     "points":5,
+                     "description":"0100 - pic certified by accredited program or compliance with code, or correct answers"
+                  },
+                  {
+                     "id":4314,
+                     "inspection_id":2879,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4500 - sewage, waste water properly disposed"
+                  }
+               ],
+               "id":2879,
+               "place_id":523,
+               "closed":false,
+               "inspected_at":"2014-01-30T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":80
+            }
+         ],
+         "id":523,
+         "name":"anns teriyaki restaurant",
+         "program_identifier":"anns teriyaki restaurant",
+         "description":"seating 13-50 - risk category iii",
+         "longitude":-122.3871169756,
+         "latitude":47.6688373481
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":2681,
+                     "inspection_id":1883,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":1883,
+               "place_id":329,
+               "closed":false,
+               "inspected_at":"2016-11-08T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":2682,
+                     "inspection_id":1884,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4200 - food-contact surfaces maintained, clean, sanitized"
+                  }
+               ],
+               "id":1884,
+               "place_id":329,
+               "closed":false,
+               "inspected_at":"2016-08-17T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":5
+            },
+            {
+               "violations":[
+                  {
+                     "id":2683,
+                     "inspection_id":1885,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":1885,
+               "place_id":329,
+               "closed":false,
+               "inspected_at":"2016-04-27T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":2684,
+                     "inspection_id":1886,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":1886,
+               "place_id":329,
+               "closed":false,
+               "inspected_at":"2015-10-21T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":2685,
+                     "inspection_id":1887,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2120 - proper cold holding temperatures ( 42 degrees f to 45 degrees f)"
+                  }
+               ],
+               "id":1887,
+               "place_id":329,
+               "closed":false,
+               "inspected_at":"2015-06-09T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":5
+            },
+            {
+               "violations":[
+                  {
+                     "id":2686,
+                     "inspection_id":1888,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":1888,
+               "place_id":329,
+               "closed":false,
+               "inspected_at":"2014-10-07T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":2687,
+                     "inspection_id":1889,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":1889,
+               "place_id":329,
+               "closed":false,
+               "inspected_at":"2014-07-08T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":2688,
+                     "inspection_id":1890,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":1890,
+               "place_id":329,
+               "closed":false,
+               "inspected_at":"2014-02-24T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            }
+         ],
+         "id":329,
+         "name":"afc sushi@qfc #891",
+         "program_identifier":"afc sushi@qfc #891",
+         "description":"seating 0-12 - risk category iii",
+         "longitude":-122.38638098,
+         "latitude":47.67056826
+      },
+      {
+         "inspections":[
+            {
+               "violations":[
+                  {
+                     "id":1515,
+                     "inspection_id":1020,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":1020,
+               "place_id":177,
+               "closed":false,
+               "inspected_at":"2016-11-29T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":1516,
+                     "inspection_id":1021,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  },
+                  {
+                     "id":1517,
+                     "inspection_id":1021,
+                     "kind":"red",
+                     "points":5,
+                     "description":"1400 - raw meats below and away from ready to eat food; species separated"
+                  }
+               ],
+               "id":1021,
+               "place_id":177,
+               "closed":false,
+               "inspected_at":"2016-02-12T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":15
+            },
+            {
+               "violations":[
+                  {
+                     "id":1518,
+                     "inspection_id":1022,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  },
+                  {
+                     "id":1519,
+                     "inspection_id":1022,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4400 - plumbing properly sized, installed,..."
+                  }
+               ],
+               "id":1022,
+               "place_id":177,
+               "closed":false,
+               "inspected_at":"2015-08-13T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":15
+            },
+            {
+               "violations":[
+                  {
+                     "id":1520,
+                     "inspection_id":1023,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1600 - proper cooling procedure"
+                  },
+                  {
+                     "id":1521,
+                     "inspection_id":1023,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"4400 - plumbing properly sized, installed,..."
+                  }
+               ],
+               "id":1023,
+               "place_id":177,
+               "closed":false,
+               "inspected_at":"2015-02-02T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":30
+            },
+            {
+               "violations":[
+                  {
+                     "id":1522,
+                     "inspection_id":1024,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1900 - no room temperature storage; proper use of time..."
+                  },
+                  {
+                     "id":1523,
+                     "inspection_id":1024,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2120 - proper cold holding temperatures ( 42 degrees f to 45 degrees f)"
+                  }
+               ],
+               "id":1024,
+               "place_id":177,
+               "closed":false,
+               "inspected_at":"2014-09-11T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":30
+            },
+            {
+               "violations":[
+                  {
+                     "id":1524,
+                     "inspection_id":1025,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":1025,
+               "place_id":177,
+               "closed":false,
+               "inspected_at":"2014-08-20T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            }
+         ],
+         "id":177,
+         "name":"8oz burger & co",
+         "program_identifier":"8 oz burger & co",
+         "description":"seating 51-150 - risk category iii",
+         "longitude":-122.3881669378,
+         "latitude":47.668442488
+      }
+   ],
+   "status":300,
+   "reason":null
+}
