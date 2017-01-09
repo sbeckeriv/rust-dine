@@ -43,6 +43,7 @@ fn main() {
                     for inspection_xml in business_xml.inspection.unwrap() {
                         let inspection = models::Inspection::find_or_create(&business,
                                                                             &inspection_xml);
+                        println!("{:?}", inspection);
                         if inspection_xml.violation.is_some() {
                             for violation_xml in inspection_xml.violation.unwrap() {
                                 models::Violation::find_or_create(&inspection, &violation_xml);
