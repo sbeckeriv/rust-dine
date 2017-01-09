@@ -29,6 +29,16 @@ pub struct Violation {
     pub points: i32,
     pub description: String,
 }
+impl Violation {
+    pub fn for_inspections(inspections: &Vec<Inspection>) -> Vec<(&Inspection, Vec<Violation>)> {
+        let violations_list = Violation::belonging_to(inspections)
+            .load::<Violation>(&db())
+            .unwrap();
+        let grouped = violations_list.grouped_by(inspections);
+        inspections.into_iter().zip(grouped).collect::<Vec<_>>()
+    }
+}
+
 
 #[derive(Serialize, Identifiable, Associations, Deserialize, Queryable, Insertable,  Debug, Clone)]
 #[belongs_to(Place)]

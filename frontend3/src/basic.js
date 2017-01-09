@@ -77,6 +77,9 @@ const Container = React.createClass({
            position={{lat: place.latitude, lng: place.longitude}}
            place={place} name={place.name}  />
     );
+    var voilations = null;
+    if(this.state.showingInfoWindow){
+    }
 
     return (
       <Map google={this.props.google}

@@ -52,8 +52,7 @@ struct InspectionJSON {
     pub violations: Vec<models::Violation>,
     pub id: i32,
     pub place_id: i32,
-    pub title: String,
-    pub closed_bool: String,
+    pub closed: bool,
     pub inspected_at: NaiveDateTime,
     pub inspection_type: String,
     pub inspection_score: i32,
@@ -85,22 +84,29 @@ fn location(lat_long: LatLongParams) -> JSON<PlacesJSON> {
                                               lat_long.sw_lat,
                                               lat_long.min,
                                               lat_long.max);
-    let mut place = models::NewPlace {
-        name: "String".to_string(),
-        program_identifier: "String".to_string(),
-        description: None,
-        phone: None,
-        address: "String".to_string(),
-        longitude: -122.3851447207237,
-        latitude: 47.66657874084547,
-    };
-    place.insert();
     let json = places.iter()
         .map(|record| {
             let ref place = record.0;
             let ref inspections = record.1;
+            let grouped_inspections = models::Violation::for_inspections(inspections);
+
+            let inspections_json = grouped_inspections.iter()
+                .map(|i_record| {
+                    let ref i = i_record.0;
+                    let ref violations = i_record.1;
+                    InspectionJSON {
+                        violations: violations.clone(),
+                        id: i.id,
+                        place_id: i.place_id,
+                        closed: i.closed,
+                        inspected_at: i.inspected_at,
+                        inspection_type: i.inspection_type.clone(),
+                        inspection_score: i.inspection_score,
+                    }
+                })
+                .collect();
             PlaceDetailsJSON {
-                inspections: vec![],
+                inspections: inspections_json,
                 id: place.id,
                 name: place.name.clone(),
                 program_identifier: place.program_identifier.clone(),
