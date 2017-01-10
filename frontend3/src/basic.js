@@ -15,8 +15,149 @@ const Container = React.createClass({
   },
 
   debugJson: function(){
-    return [{"inspections":[],"id":8,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":7,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":6,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":5,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":4,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":3,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":2,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547},{"inspections":[],"id":1,"name":"String","program_identifier":"String","description":null,"longitude":-122.3851447207237,"latitude":47.66657874084547}];
+    this.setState({places: [
+      { "inspections":[
+            { "violations":[
+                  { "id":22971,
+                     "inspection_id":14648,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":14648,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2016-10-03T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            { "violations":[
+                  {
+                     "id":22972,
+                     "inspection_id":14649,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":14649,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2015-12-07T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":22973,
+                     "inspection_id":14650,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":14650,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2015-09-21T07:15:00",
+               "inspection_type":"return inspection",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":22974,
+                     "inspection_id":14651,
+                     "kind":"red",
+                     "points":25,
+                     "description":"1600 - proper cooling procedure"
+                  }, { "id":22975, "inspection_id":14651, "kind":"red", "points":10, "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)" }, { "id":22976, "inspection_id":14651, "kind":"red", "points":5, "description":"0200 - food worker cards current for all food workers; new food workers trained" } ], "id":14651, "place_id":2928, "closed":false, "inspected_at":"2015-09-04T07:15:00", "inspection_type":"routine inspection/field review", "inspection_score":40 }, { "violations":[ { "id":22977, "inspection_id":14652, "kind":"red", "points":15, "description":"2000 - proper reheating procedures for hot holding" }, { "id":22978, "inspection_id":14652, "kind":"blue", "points":5, "description":"4200 - food-contact surfaces maintained, clean, sanitized" }
+               ],
+               "id":14652,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2015-03-24T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":20
+            },
+            {
+               "violations":[
+                  {
+                     "id":22979,
+                     "inspection_id":14653,
+                     "kind":"",
+                     "points":0,
+                     "description":""
+                  }
+               ],
+               "id":14653,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2014-10-27T07:15:00",
+               "inspection_type":"consultation/education - field",
+               "inspection_score":0
+            },
+            {
+               "violations":[
+                  {
+                     "id":22980,
+                     "inspection_id":14654,
+                     "kind":"red",
+                     "points":10,
+                     "description":"2110 - proper cold holding temperatures (greater than  45 degrees f)"
+                  },
+                  {
+                     "id":22981,
+                     "inspection_id":14654,
+                     "kind":"red",
+                     "points":5,
+                     "description":"0200 - food worker cards current for all food workers; new food workers trained"
+                  }
+               ],
+               "id":14654,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2014-07-21T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":15
+            },
+            {
+               "violations":[
+                  {
+                     "id":22982,
+                     "inspection_id":14655,
+                     "kind":"red",
+                     "points":5,
+                     "description":"2120 - proper cold holding temperatures ( 42 degrees f to 45 degrees f)"
+                  },
+                  {
+                     "id":22983,
+                     "inspection_id":14655,
+                     "kind":"blue",
+                     "points":5,
+                     "description":"3300 - potential food contamination prevented during delivery,  preparation, storage, display"
+                  }
+               ],
+               "id":14655,
+               "place_id":2928,
+               "closed":false,
+               "inspected_at":"2014-03-06T07:15:00",
+               "inspection_type":"routine inspection/field review",
+               "inspection_score":10
+            }
+         ],
+         "id":2928,
+         "name":"el borracho",
+         "program_identifier":"el borracho",
+         "description":"seating 13-50 - risk category iii",
+         "longitude":-122.384274,
+         "latitude":47.668233
+      },
+    ]});
   },
+
   getPlaces: function(mapProps, map) {
 			var bounds = map.getBounds();
 			var that=this;
@@ -68,6 +209,31 @@ const Container = React.createClass({
     }
   },
 
+  renderDetails: function(selectedPlace){
+    if(selectedPlace){
+      var place = selectedPlace.place;
+      if(place){
+        var inspections = null;
+        if(place.inspections){
+          inspections = place.inspections.map((inspection) =>{
+                                                var date = new Date(inspection.inspected_at);
+                                                return (<div key={inspection.id}>
+                                                  Inspected on {date.toLocaleDateString()} score {inspection.inspection_score}
+                                                </div>)
+                  }
+                                             )
+        }
+        return (
+          <div>
+          <h1>{place.name}</h1>
+          <br/>
+          {inspections}
+          </div>
+        )
+      }
+    }
+  },
+
   render: function() {
     if (!this.props.loaded) {
       return <div>Loading...</div>
@@ -77,9 +243,6 @@ const Container = React.createClass({
            position={{lat: place.latitude, lng: place.longitude}}
            place={place} name={place.name}  />
     );
-    var voilations = null;
-    if(this.state.showingInfoWindow){
-    }
 
     return (
       <Map google={this.props.google}
@@ -99,7 +262,7 @@ const Container = React.createClass({
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
               <div>
-                <h1>{this.state.selectedPlace.place.name}</h1>
+                {this.renderDetails(this.state.selectedPlace)}
               </div>
           </InfoWindow>
       </Map>

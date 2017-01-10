@@ -17,6 +17,7 @@ extern crate lazy_static;
 extern crate serde_derive;
 
 use rocket_contrib::{Template, JSON};
+use rocket::http::Method;
 use std::collections::HashMap;
 use std::sync::Mutex;
 use tera::Context;
@@ -24,6 +25,7 @@ use chrono::{NaiveDate, NaiveDateTime};
 
 pub mod schema;
 pub mod models;
+mod cors;
 mod static_files;
 #[derive(Serialize)]
 struct TemplateContext {
@@ -75,9 +77,14 @@ struct PlacesJSON {
     status: i32,
     reason: Option<String>,
 }
-
+#[route(OPTIONS, "/location")]
+fn cors_preflight() -> cors::PreflightCORS {
+    cors::CORS::preflight("http://localhost")
+        .methods(vec![Method::Options, Method::Get])
+        .headers(vec!["Content-Type"])
+}
 #[get("/location?<lat_long>")]
-fn location(lat_long: LatLongParams) -> JSON<PlacesJSON> {
+fn location(lat_long: LatLongParams) -> cors::CORS<JSON<PlacesJSON>> {
     let places = models::Place::in_the_bounds(lat_long.sw_long,
                                               lat_long.ne_long,
                                               lat_long.ne_lat,
@@ -119,7 +126,7 @@ fn location(lat_long: LatLongParams) -> JSON<PlacesJSON> {
         status: 300,
         reason: None,
     };
-    JSON(data)
+    cors::CORS::any(JSON(data))
 }
 
 #[derive(FromForm)]
@@ -133,5 +140,8 @@ fn search(search: SearchParams) -> &'static str {
 }
 
 fn main() {
-    rocket::ignite().mount("/", routes![index, location, search, static_files::all]).launch();
+    rocket::ignite()
+        .mount("/",
+               routes![index, location, cors_preflight, search, static_files::all])
+        .launch();
 }
