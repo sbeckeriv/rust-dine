@@ -6,6 +6,10 @@ extern crate rocket_contrib;
 extern crate serde_json;
 extern crate chrono;
 extern crate dotenv;
+extern crate postgres;
+extern crate r2d2;
+extern crate r2d2_postgres;
+extern crate r2d2_diesel;
 extern crate tera;
 #[macro_use]
 extern crate diesel;

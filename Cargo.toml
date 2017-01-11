@@ -11,6 +11,10 @@ serde_derive = "0.8"
 rocket = "0.1"
 rocket_codegen = "0.1"
 diesel = { version = "0.9.0", features = ["postgres", "chrono"] }
+r2d2_postgres = "*"
+r2d2-diesel = "*"
+r2d2 = "*"
+postgres = "*"
 chrono = {version = "*", features = ["serde"]}
 diesel_codegen = { version = "0.9.0", features = ["postgres" ] }
 dotenv = "0.8.0"

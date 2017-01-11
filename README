@@ -9,6 +9,7 @@ A few changes from the old ruby include a react front end and a migration to pos
 
 run the rocket server:
 
+`diesel setup`
 `diesel migration run`
 `cargo run`
 

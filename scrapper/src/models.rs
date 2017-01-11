@@ -14,12 +14,13 @@ use schema::places::dsl::places as all_places;
 
 fn db() -> PgConnection {
     dotenv().ok();
-
     let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
     PgConnection::establish(&database_url).expect(&format!("Error connecting to {}", database_url))
 }
 
+// SHOULDDO: Break out the xml in this file. Move changes to main folder and figure out how to load them.
 
+// could make this a join table and a single list of violations
 #[derive(Insertable, Debug, Clone)]
 #[table_name="violations"]
 pub struct NewViolation {
@@ -275,6 +276,7 @@ pub struct BusinessXml {
     pub city: Option<String>,
     pub zip_code: Option<String>,
     pub phone: Option<String>,
+    // fails if there is no long or lat. need to parse them as strings then convert to floats
     pub longitude: Option<String>,
     pub latitude: Option<String>,
     pub inspection: Option<Vec<InspectionXml>>,
