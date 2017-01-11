@@ -1,0 +1,24 @@
+#Dinegerous in rust
+
+Dinegerous was a website to display a restaurants inspection data on google maps. King County provides an xml download of all the data. The old site was ruby and elastic search. The server was simple and the data was pretty easy. Why not try out a new rust framework?!
+
+
+A few changes from the old ruby include a react front end and a migration to postgres. The server is Rocket and react was setup with create-react-app. I am also parsing the xml file with serde now.
+
+## start
+
+run the rocket server:
+
+`diesel migration run`
+`cargo run`
+
+run the front end:
+you might need to run npm install.
+
+`cd frontend3`
+`npm start`
+
+parse the xml file and create records:
+
+`cd scraper`
+`cargo run`
