@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import _ from 'lodash'
 import Map, {Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react'
 import 'whatwg-fetch'
 
 const Container = React.createClass({
+
   getInitialState: function() {
     return {
       showingInfoWindow: false,
@@ -209,26 +210,71 @@ const Container = React.createClass({
     }
   },
 
+  getMarkerIcon: function(inspections){
+
+    var last = this.lastestInspection(inspections);
+
+    if(!last){
+      return "white.png";
+    }
+    if(last.inspection_score==0){
+      return "white.png"
+    }
+
+    if(last.inspection_score<=20){
+      return "green.png"
+    }
+
+    if(last.inspection_score<=50){
+      return "yellow.png"
+    }
+
+    return "red.png"
+  },
+
+	lastestInspection: function(inspections){
+		var filtered= this.realInspections(inspections);
+    if(filtered[0]){
+      var sorted = _.sortBy(filtered, [function(o) { return o.inspected_at; }]);
+      return _.last(sorted);
+    }
+	},
+
+  realInspections: function(inspections){
+    if(inspections){
+      return _.filter(inspections, function(o) { return o.inspection_type!="consultation/education - field"; });
+    }else{
+      return []
+    }
+  },
   renderDetails: function(selectedPlace){
     if(selectedPlace){
       var place = selectedPlace.place;
       if(place){
         var inspections = null;
-        if(place.inspections){
-          inspections = place.inspections.map((inspection) =>{
-                                                var date = new Date(inspection.inspected_at);
-                                                return (<div key={inspection.id}>
-                                                  Inspected on {date.toLocaleDateString()} score {inspection.inspection_score}
-                                                </div>)
-                  }
-                                             )
+        var non_education = this.realInspections(place.inspections);
+        if(non_education[0]){
+          inspections = non_education.map((inspection) =>{
+              var date = new Date(inspection.inspected_at);
+              return (<tr key={inspection.id}>
+                <td>{date.toLocaleDateString()}</td>
+                <td>{inspection.inspection_score}</td>
+              </tr>)
+            }
+          )
         }
         return (
-          <div>
-          <h1>{place.name}</h1>
-          <br/>
-          {inspections}
-          </div>
+         <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              {inspections}
+            </tbody>
+          </table>
         )
       }
     }
@@ -238,10 +284,18 @@ const Container = React.createClass({
     if (!this.props.loaded) {
       return <div>Loading...</div>
     }
-    var markers = this.state.places.map((place,index) =>
-          <Marker key={place.id} onClick={this.onMarkerClick}
+    var that = this;
+    var markers = this.state.places.map((place,index) =>{
+          var icon = this.getMarkerIcon(place.inspections);
+          var iconProps = {
+              url: icon,
+              anchor:new that.props.google.maps.Point(12,24),
+          };
+          return(<Marker key={place.id} onClick={this.onMarkerClick}
            position={{lat: place.latitude, lng: place.longitude}}
-           place={place} name={place.name}  />
+           place={place} name={place.name} icon={ iconProps }
+           />)
+    }
     );
 
     return (
@@ -262,6 +316,7 @@ const Container = React.createClass({
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
               <div>
+                <h1>{this.state.selectedPlace.name}</h1>
                 {this.renderDetails(this.state.selectedPlace)}
               </div>
           </InfoWindow>
