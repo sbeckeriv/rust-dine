@@ -119,7 +119,7 @@ impl Inspection {
             .ok()
     }
 
-    pub fn find_or_create(place: &Place, inspection: &InspectionXml) -> Inspection {
+    pub fn find_or_create(place: &Place, inspection: &InspectionXml) -> (Inspection, bool) {
         let date_string = inspection.inspection_date.clone().unwrap_or("".to_string());
         let mut date_string = date_string.trim().to_string();
         date_string.push_str(" 7:15");
@@ -127,7 +127,7 @@ impl Inspection {
             .unwrap_or(NaiveDate::from_ymd(1999, 9, 5).and_hms(23, 56, 4));
         let record = Inspection::find_from_xml(place.id, &inspection_date);
         match record {
-            Some(record) => record,
+            Some(record) => (record, false),
             None => {
                 let mut new_record = NewInspection {
                     place_id: place.id,
@@ -143,7 +143,7 @@ impl Inspection {
                         .parse::<i32>()
                         .unwrap_or(0),
                 };
-                new_record.insert().unwrap()
+                (new_record.insert().unwrap(), true)
             }
         }
     }

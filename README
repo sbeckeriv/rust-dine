@@ -23,3 +23,16 @@ parse the xml file and create records:
 
 `cd scraper`
 `cargo run`
+
+
+## Deploy
+
+`cd frontend3`
+`npm run build`
+`cp build/static/js/main.<hash>.js.map ../public/static/js/main.js.map`
+`cp build/static/js/main.<hash>.js ../public/static/js/main.js`
+`cp  build/static/css/main.<hash.css ../public/static/css/main.css`
+
+## issues
+
+If you put anything in one public directory like an image or you change the index you need to do it both rust and npm currently.
