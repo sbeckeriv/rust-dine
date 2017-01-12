@@ -7,4 +7,6 @@ CREATE TABLE inspections (
   inspected_at TIMESTAMP NOT NULL,
   inspection_type VARCHAR NOT NULL,
   inspection_score INTEGER NOT NULL
-)
+);
+CREATE UNIQUE INDEX inspections_create_idx ON inspections(place_id,inspected_at);
+CREATE INDEX inspections_place_id_idx ON inspections(place_id);
