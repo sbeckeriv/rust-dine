@@ -17,6 +17,7 @@ use r2d2_diesel::ConnectionManager;
 
 lazy_static! {
   static ref DB_POOL: r2d2::Pool<ConnectionManager<PgConnection>> = {
+    dotenv().ok();
     let database_url = env::var("DATABASE_URL").expect("Find DATABASE_URL environment variable");
 
     let config = r2d2::Config::builder()

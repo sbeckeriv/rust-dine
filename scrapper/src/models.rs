@@ -251,38 +251,60 @@ impl Place {
 
 #[derive(Debug,Display, Deserialize, PartialEq, Serialize)]
 pub struct ViolationXml {
+    #[serde(rename = "Violation_Type")]
     pub violation_type: Option<String>,
+    #[serde(rename = "Violation_Descr")]
     pub violation_descr: Option<String>,
+    #[serde(rename = "Violation_Points")]
     pub violation_points: Option<String>,
 }
 
 #[derive(Debug,Display, Deserialize, PartialEq, Serialize)]
 pub struct InspectionXml {
+    #[serde(rename = "Inspection_Date")]
     pub inspection_date: Option<String>,
+    #[serde(rename = "Inspection_Business_Name")]
     pub inspection_business_name: Option<String>,
+    #[serde(rename = "Inspection_Type")]
     pub inspection_type: Option<String>,
+    #[serde(rename = "Inspection_Score")]
     pub inspection_score: Option<String>,
+    #[serde(rename = "Inspection_Result")]
     pub inspection_result: Option<String>,
+    #[serde(rename = "Inspection_Closed_Business")]
     pub inspection_closed_business: Option<String>,
+    #[serde(rename = "Violation")]
     pub violation: Option<Vec<ViolationXml>>,
 }
 
 #[derive(Debug, Display, Deserialize, PartialEq, Serialize)]
 pub struct BusinessXml {
+    #[serde(rename = "Name")]
     pub name: Option<String>,
+    #[serde(rename = "Program_Identifier")]
     pub program_identifier: Option<String>,
+    #[serde(rename = "Description")]
     pub description: Option<String>,
+    #[serde(rename = "Address")]
     pub address: Option<String>,
+    #[serde(rename = "City")]
     pub city: Option<String>,
+    #[serde(rename = "Zip_Code")]
     pub zip_code: Option<String>,
+    #[serde(rename = "Phone")]
     pub phone: Option<String>,
     // fails if there is no long or lat. need to parse them as strings then convert to floats
+    #[serde(rename = "Longitude")]
     pub longitude: Option<String>,
+    #[serde(rename = "Latitude")]
     pub latitude: Option<String>,
+    #[serde(rename = "Inspection")]
     pub inspection: Option<Vec<InspectionXml>>,
 }
 #[derive(Debug,Display, Deserialize, PartialEq, Serialize)]
 pub struct BusinessInspectionViolation {
+    #[serde(rename = "Disclaimer")]
     pub disclaimer: Option<String>,
+    #[serde(rename = "Business")]
     pub business: Vec<BusinessXml>,
 }

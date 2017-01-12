@@ -7,6 +7,7 @@ authors = ["Stephen Becker IV <github@deathbyescalator.com>"]
 lazy_static = "*"
 serde = "0.8"
 serde_derive = "0.8"
+curl = "*"
 serde_xml = {git="https://github.com/serde-rs/xml.git"}
 diesel = { version = "0.9.0", features = ["postgres", "chrono"] }
 chrono = {version = "*", features = ["serde"]}
