@@ -262,6 +262,7 @@ const Container = React.createClass({
   },
   renderInspectionDetails: function(inspection){
       if(inspection.violations[0]){
+
         var list = inspection.violations.map((violation)=>{
                   return (<tr key={violation.id} style={{'textAlign': "left"}} >
                     <td style={{'min-width': '40px'}}>{violation.kind}</td>
@@ -293,7 +294,8 @@ const Container = React.createClass({
         var inspections = null;
         var non_education = this.realInspections(place.inspections);
         if(non_education[0]){
-          inspections = non_education.map((inspection) =>{
+          var non_education_sorted = _.sortBy(non_education, [function(o) { return o.inspected_at; }]).reverse();
+          inspections = non_education_sorted.map((inspection) =>{
               var date = new Date(inspection.inspected_at);
               return ([
                 <tr key={inspection.id}  style={{'textAlign': "left"}} >
