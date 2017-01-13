@@ -1,18 +1,15 @@
-use diesel;
-use diesel::types::*;
 use diesel::prelude::*;
 use diesel::pg::PgConnection;
-use chrono::{NaiveDate, NaiveDateTime};
+use chrono::NaiveDateTime;
 use dotenv::dotenv;
 use std::time::Duration;
 use std::env;
 use schema::inspections;
 use schema::inspections::dsl::inspections as all_inspections;
 use schema::violations;
-use schema::violations::dsl::violations as all_violations;
 use schema::places;
 use schema::places::dsl::places as all_places;
-use r2d2::{self, PooledConnection};
+use r2d2;
 use r2d2_diesel::ConnectionManager;
 
 lazy_static! {
@@ -33,22 +30,7 @@ lazy_static! {
   };
 }
 
-pub struct DBConnection(PooledConnection<ConnectionManager<PgConnection>>);
-
-impl DBConnection {
-    pub fn get(&self) -> &PooledConnection<ConnectionManager<PgConnection>> {
-        &self.0
-    }
-}
-
-fn db() -> PgConnection {
-    dotenv().ok();
-
-    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-    PgConnection::establish(&database_url).expect(&format!("Error connecting to {}", database_url))
-}
-
-#[derive(Serialize, Identifiable, Associations, Deserialize, Queryable, Insertable, Debug, Clone)]
+#[derive(Serialize, Identifiable, Associations, Deserialize, Queryable,  Debug, Clone)]
 #[belongs_to(Inspection)]
 #[table_name="violations"]
 pub struct Violation {
@@ -70,7 +52,7 @@ impl Violation {
 }
 
 
-#[derive(Serialize, Identifiable, Associations, Deserialize, Queryable, Insertable,  Debug, Clone)]
+#[derive(Serialize, Identifiable, Associations, Deserialize, Queryable,   Debug, Clone)]
 #[belongs_to(Place)]
 #[table_name = "inspections"]
 pub struct Inspection {
@@ -90,36 +72,6 @@ impl Inspection {
         all_inspections.order(inspections::id.desc())
             .load::<Inspection>(local_db)
             .unwrap()
-    }
-
-    pub fn insert(&self) -> bool {
-
-        let ref local_db = *DB_POOL.get().unwrap();
-        diesel::insert(self).into(inspections::table).execute(local_db).is_ok()
-    }
-
-    pub fn delete_with_id(id: i32) -> bool {
-
-        let ref local_db = *DB_POOL.get().unwrap();
-        diesel::delete(all_inspections.find(id)).execute(local_db).is_ok()
-    }
-}
-
-#[derive(Insertable, FromForm, Debug, Clone)]
-#[table_name = "places"]
-pub struct NewPlace {
-    pub name: String,
-    pub program_identifier: String,
-    pub description: Option<String>,
-    pub phone: Option<String>,
-    pub address: String,
-    pub longitude: f64,
-    pub latitude: f64,
-}
-impl NewPlace {
-    pub fn insert(&self) -> bool {
-        let ref local_db = *DB_POOL.get().unwrap();
-        diesel::insert(self).into(places::table).execute(local_db).is_ok()
     }
 }
 

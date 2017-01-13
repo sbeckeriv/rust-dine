@@ -1,6 +1,5 @@
-#![feature(plugin, custom_derive, proc_macro)]
+#![feature(plugin, custom_derive)]
 #![plugin(rocket_codegen)]
-
 extern crate rocket;
 extern crate rocket_contrib;
 extern crate serde_json;
@@ -22,15 +21,13 @@ extern crate serde_derive;
 
 use rocket_contrib::{Template, JSON};
 use rocket::http::Method;
-use std::collections::HashMap;
-use std::sync::Mutex;
-use tera::Context;
-use chrono::{NaiveDate, NaiveDateTime};
+use chrono::NaiveDateTime;
 
-pub mod schema;
-pub mod models;
+mod schema;
+mod models;
 mod cors;
 mod static_files;
+
 #[derive(Serialize)]
 struct TemplateContext {
     items: Vec<String>,
@@ -133,19 +130,10 @@ fn location(lat_long: LatLongParams) -> cors::CORS<JSON<PlacesJSON>> {
     cors::CORS::any(JSON(data))
 }
 
-#[derive(FromForm)]
-struct SearchParams<'r> {
-    captures: &'r str,
-    limit: Option<i64>,
-}
-#[get("/search?<search>")]
-fn search(search: SearchParams) -> &'static str {
-    "Hello, world!"
-}
 
 fn main() {
     rocket::ignite()
         .mount("/",
-               routes![index, location, cors_preflight, search, static_files::all])
+               routes![index, location, cors_preflight, static_files::all])
         .launch();
 }
