@@ -231,18 +231,18 @@ const Container = React.createClass({
   getMarkerIcon: function(inspections){
     var last = this.lastestInspection(inspections);
     if(!last){
-      return "white.png";
+      return "//d96n0koiv6prv.cloudfront.net/white.png";
     }
     if(last.inspection_score==0){
-      return "white.png"
+      return "//d96n0koiv6prv.cloudfront.net/white.png"
     }
     if(last.inspection_score<=20){
-      return "green.png"
+      return "//d96n0koiv6prv.cloudfront.net/green.png"
     }
     if(last.inspection_score<=50){
-      return "yellow.png"
+      return "//d96n0koiv6prv.cloudfront.net/yellow.png"
     }
-    return "red.png"
+    return "//d96n0koiv6prv.cloudfront.net/red.png"
   },
 
 	lastestInspection: function(inspections){
