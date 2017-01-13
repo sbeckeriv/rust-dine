@@ -166,7 +166,11 @@ const Container = React.createClass({
 			if (bounds) {
 					var sw = bounds.getSouthWest();
 					var ne = bounds.getNorthEast();
+
 					var url = '/location?sw_lat=' + sw.lat() + "&sw_long=" + sw.lng() + '&ne_lat=' + ne.lat() + "&ne_long=" + ne.lng();
+          if(window.location.host.includes("localhost:3000")){
+            url = "http://localhost:8000"+url;
+          }
 					fetch(url)
 					.then(function(response) {
 						return response.json()
@@ -259,14 +263,14 @@ const Container = React.createClass({
   renderInspectionDetails: function(inspection){
       if(inspection.violations[0]){
         var list = inspection.violations.map((violation)=>{
-                  return (<tr key={violation.id} style={{'text-align': "left"}} >
+                  return (<tr key={violation.id} style={{'textAlign': "left"}} >
                     <td style={{'min-width': '40px'}}>{violation.kind}</td>
                     <td style={{'min-width': '10px'}}>{violation.points}</td>
                     <td>{violation.description}</td>
                   </tr>)
         });
         return (
-          <table  style={{'text-align': "left"}} >
+          <table  style={{'textAlign': "left"}} >
             <thead>
             <tr>
               <th>Kind</th>
@@ -292,7 +296,7 @@ const Container = React.createClass({
           inspections = non_education.map((inspection) =>{
               var date = new Date(inspection.inspected_at);
               return ([
-                <tr key={inspection.id}  style={{'text-align': "left"}} >
+                <tr key={inspection.id}  style={{'textAlign': "left"}} >
                   <td>{date.toLocaleDateString()}</td>
                   <td>{inspection.inspection_score}</td>
                 </tr>,
@@ -306,7 +310,7 @@ const Container = React.createClass({
           )
         }
         return (
-         <table  style={{'text-align': "left"}} >
+         <table  style={{'textAlign': "left"}} >
             <thead>
               <tr>
                 <th>Inspection Date</th>
