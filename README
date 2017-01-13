@@ -1,29 +1,29 @@
 #Dinegerous in rust
 
-Dinegerous was a website to display a restaurants inspection data on google maps. King County provides an xml download of all the data. The old site was ruby and elastic search. The server was simple and the data was pretty easy. Why not try out a new rust framework?!
+A working example of Rocket, Diesel, Serde(xml,json),R2D2 postgres diesel connection pull and React.
+
+Dinegerous is a website to display a restaurants inspection data on google maps. King County provides an xml download of all the data. The old site was ruby and elastic search. The server was simple and the data was pretty easy. Why not try out a new rust framework?!
 
 
 A few changes from the old ruby include a react front end and a migration to postgres. The server is Rocket and react was setup with create-react-app. I am also parsing the xml file with serde now.
 
-## start
+
+## Dev start
 
 `rustup install nightly-2017-01-08`
 `rustup default nightly-2017-01-08`
 
-aws
-`sudo su`
-`yum install git gcc postgres<something devl>`
-
 run the rocket server:
 
-`diesel setup`
+`diesel setup` #might not need this
 `diesel migration run`
 `cargo run`
 
 run the front end:
-you might need to run npm install.
+you  need to run npm install.
 
 `cd frontend3`
+`npm install`
 `npm start`
 
 parse the xml file and create records:
@@ -39,7 +39,41 @@ parse the xml file and create records:
 `cp build/static/js/main.<hash>.js.map ../public/static/js/main.js.map`
 `cp build/static/js/main.<hash>.js ../public/static/js/main.js`
 `cp  build/static/css/main.<hash.css ../public/static/css/main.css`
+`git commit . -m "new assets"`
+`git commit push`
+
+
+aws ec2
+`ssh to box`
+`sudo su`
+`yum install git gcc postgres<something devl> sqlite-<dev something> openssl*`
+install rustup and run commands above both as root and ec2-user
+`git clone `
+`cd rust-dine`
+create .env file with postgres data
+create Rocket.toml file https://api.rocket.rs/rocket/config/index.html#rockettoml make dev prod settings
+`cargo build --release`
+`cd scraper`
+`cargo build --release`
+`cargo run --release &` #takes 40 minutes about
+`cd ..`
+`cargo run --release`
+test on port:8000 if aws is configured right it should work. debugging security groups or ports is up to you.
+save ami
+when launching put aws.sh in the user input and the server will start running.
+
+aws tools:
+ec2 (nanos)
+loadbalancer
+rds postgres
+cloudfront for images only currently
+(related IAM, security groups)
+
 
 ## issues
 
-If you put anything in one public directory like an image or you change the index you need to do it both rust and npm currently.
+If you put anything in one public directory like an image or you change the index you need to do it both rust and npm currently
+duplicate lat long is an issue
+map doesnt reload on zoom
+it looks bad
+should cron the scrapper
