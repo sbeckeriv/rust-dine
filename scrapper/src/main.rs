@@ -83,6 +83,8 @@ fn main() {
                 .into_iter()
                 //can i just run an iter with items?
                 .map(|business_xml| {
+                    //businesses can have the same lat long. we need to detect this an add an
+                    //offset
                     let business = models::Place::find_or_create(&business_xml);
                     // println!("{:?}", business);
                     if business_xml.inspection.is_some() {
