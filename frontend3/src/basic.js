@@ -9,6 +9,7 @@ const Container = React.createClass({
   getInitialState: function() {
     return {
       showingInfoWindow: false,
+      activeInspection: null,
       activeMarker: {},
       selectedPlace: {place:{}, inspections:[]},
       places: [],
@@ -186,9 +187,20 @@ const Container = React.createClass({
     const center = props.google.maps.LatLng();
   },
 
+  onDetailsClick: function(e){
+    e.preventDefault();
+    console.log('The link was clicked.');
+    debugger
+  },
+
+  onDetailsRemove: function(){
+    this.setState({activeInspection: null});
+  },
+
   onMarkerClick: function(props, marker, e) {
     this.setState({
       selectedPlace: props,
+      activeInspection: null,
       activeMarker: marker,
       showingInfoWindow: true
     });
@@ -197,6 +209,7 @@ const Container = React.createClass({
   onInfoWindowClose: function() {
     this.setState({
       showingInfoWindow: false,
+      activeInspection: null,
       activeMarker: null
     })
   },
@@ -205,30 +218,26 @@ const Container = React.createClass({
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: null,
+        activeInspection: null
       })
     }
   },
 
   getMarkerIcon: function(inspections){
-
     var last = this.lastestInspection(inspections);
-
     if(!last){
       return "white.png";
     }
     if(last.inspection_score==0){
       return "white.png"
     }
-
     if(last.inspection_score<=20){
       return "green.png"
     }
-
     if(last.inspection_score<=50){
       return "yellow.png"
     }
-
     return "red.png"
   },
 
@@ -247,28 +256,61 @@ const Container = React.createClass({
       return []
     }
   },
+  renderInspectionDetails: function(inspection){
+      if(inspection.violations[0]){
+        var list = inspection.violations.map((violation)=>{
+                  return (<tr key={violation.id} style={{'text-align': "left"}} >
+                    <td style={{'min-width': '40px'}}>{violation.kind}</td>
+                    <td style={{'min-width': '10px'}}>{violation.points}</td>
+                    <td>{violation.description}</td>
+                  </tr>)
+        });
+        return (
+          <table  style={{'text-align': "left"}} >
+            <thead>
+            <tr>
+              <th>Kind</th>
+              <th>Points</th>
+              <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+              {list}
+            </tbody>
+          </table>
+        );
+      }
+  },
   renderDetails: function(selectedPlace){
-    if(selectedPlace){
+    if(selectedPlace && !this.state.activeInspection){
       var place = selectedPlace.place;
       if(place){
+        var that = this;
         var inspections = null;
         var non_education = this.realInspections(place.inspections);
         if(non_education[0]){
           inspections = non_education.map((inspection) =>{
               var date = new Date(inspection.inspected_at);
-              return (<tr key={inspection.id}>
-                <td>{date.toLocaleDateString()}</td>
-                <td>{inspection.inspection_score}</td>
-              </tr>)
+              return ([
+                <tr key={inspection.id}  style={{'text-align': "left"}} >
+                  <td>{date.toLocaleDateString()}</td>
+                  <td>{inspection.inspection_score}</td>
+                </tr>,
+                <tr colSpan={2} key={"sub"+inspection.id}>
+                  <td>
+                    {that.renderInspectionDetails(inspection)}
+                  </td>
+                </tr>
+              ])
             }
           )
         }
         return (
-         <table>
+         <table  style={{'text-align': "left"}} >
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Score</th>
+                <th>Inspection Date</th>
+                <th>Total Score</th>
               </tr>
             </thead>
             <tbody>
@@ -313,6 +355,7 @@ const Container = React.createClass({
           {markers}
 
           <InfoWindow
+            onClicked={this.onDetailsClick}
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}>
               <div>

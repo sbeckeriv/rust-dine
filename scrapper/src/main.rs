@@ -93,9 +93,12 @@ fn main() {
                             // println!("{:?}", inspection);
                             if new_record && inspection_xml.violation.is_some() {
                                 for violation_xml in inspection_xml.violation.unwrap() {
-                                    let violation =
-                                        models::Violation::find_or_create(&inspection,
-                                                                          &violation_xml);
+                                    let points = violation_xml.violation_points.clone().unwrap_or("".to_string());
+                                    if points != "" {
+                                        let violation =
+                                            models::Violation::find_or_create(&inspection,
+                                                                              &violation_xml);
+                                    }
                                     // println!("{:?}", violation);
                                 }
                             }
