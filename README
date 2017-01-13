@@ -7,6 +7,13 @@ A few changes from the old ruby include a react front end and a migration to pos
 
 ## start
 
+`rustup install nightly-2017-01-08`
+`rustup default nightly-2017-01-08`
+
+aws
+`sudo su`
+`yum install git gcc postgres<something devl>`
+
 run the rocket server:
 
 `diesel setup`

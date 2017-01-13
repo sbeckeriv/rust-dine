@@ -166,7 +166,7 @@ const Container = React.createClass({
 			if (bounds) {
 					var sw = bounds.getSouthWest();
 					var ne = bounds.getNorthEast();
-					var url = 'http://localhost:8000/location?sw_lat=' + sw.lat() + "&sw_long=" + sw.lng() + '&ne_lat=' + ne.lat() + "&ne_long=" + ne.lng();
+					var url = '/location?sw_lat=' + sw.lat() + "&sw_long=" + sw.lng() + '&ne_lat=' + ne.lat() + "&ne_long=" + ne.lng();
 					fetch(url)
 					.then(function(response) {
 						return response.json()
