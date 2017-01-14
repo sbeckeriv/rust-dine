@@ -1,6 +1,6 @@
-#![feature(plugin, custom_derive, proc_macro)]
-extern crate chrono;
+#![feature(plugin, custom_derive)]
 extern crate dotenv;
+extern crate chrono;
 extern crate serde;
 extern crate curl;
 #[macro_use]
@@ -14,13 +14,10 @@ extern crate serde_derive;
 extern crate serde_xml;
 use chrono::*;
 
-use std::{env, fmt};
+use std::env;
 use std::path::Path;
 use std::io::prelude::*;
 use std::fs::File;
-use std::collections::HashMap;
-use std::sync::Mutex;
-use chrono::{NaiveDate, NaiveDateTime};
 use curl::easy::Easy;
 
 pub mod schema;
@@ -28,7 +25,7 @@ pub mod models;
 pub mod error;
 
 fn from_str(path: Option<String>) -> Result<models::BusinessInspectionViolation, error::Error> {
-    let mut buffer = match path {
+    let buffer = match path {
         Some(path) => {
             println!("loading file {}", path);
             let mut buffer = String::new();
@@ -86,22 +83,17 @@ fn main() {
                     //businesses can have the same lat long. we need to detect this an add an
                     //offset
                     let business = models::Place::find_or_create(&business_xml);
-                    // println!("{:?}", business);
                     if business_xml.inspection.is_some() {
                         for inspection_xml in business_xml.inspection.unwrap() {
                             let (inspection,new_record) = models::Inspection::find_or_create(&business,
                                                                                 &inspection_xml);
 
-                            // println!("{:?}", inspection);
                             if new_record && inspection_xml.violation.is_some() {
                                 for violation_xml in inspection_xml.violation.unwrap() {
                                     let points = violation_xml.violation_points.clone().unwrap_or("".to_string());
                                     if points != "" {
-                                        let violation =
-                                            models::Violation::find_or_create(&inspection,
-                                                                              &violation_xml);
+                                        models::Violation::find_or_create(&inspection, &violation_xml);
                                     }
-                                    // println!("{:?}", violation);
                                 }
                             }
                         }

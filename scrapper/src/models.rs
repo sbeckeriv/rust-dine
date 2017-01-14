@@ -1,5 +1,4 @@
 use diesel;
-use diesel::types::*;
 use diesel::prelude::*;
 use diesel::pg::PgConnection;
 use chrono::{NaiveDate, NaiveDateTime};
@@ -62,7 +61,7 @@ impl Violation {
         match record {
             Some(record) => record,
             None => {
-                let mut new_record = NewViolation {
+                let new_record = NewViolation {
                     inspection_id: inspection.id,
                     kind: violation.violation_type.clone().unwrap_or("".to_string()),
                     description: violation.violation_descr.clone().unwrap_or("".to_string()),
@@ -129,7 +128,7 @@ impl Inspection {
         match record {
             Some(record) => (record, false),
             None => {
-                let mut new_record = NewInspection {
+                let new_record = NewInspection {
                     place_id: place.id,
                     inspected_at: inspection_date,
                     title: "".to_string(),
@@ -154,13 +153,9 @@ impl Inspection {
     pub fn insert(&self) -> bool {
         diesel::insert(self).into(inspections::table).execute(&db()).is_ok()
     }
-
-    pub fn delete_with_id(id: i32) -> bool {
-        diesel::delete(all_inspections.find(id)).execute(&db()).is_ok()
-    }
 }
 
-#[derive(Insertable, FromForm, Debug, Clone)]
+#[derive(Insertable, Debug, Clone)]
 #[table_name = "places"]
 pub struct NewPlace {
     pub name: String,
@@ -213,7 +208,7 @@ impl Place {
                     .unwrap_or("".to_string())
                     .parse::<f64>()
                     .unwrap_or(0.0);
-                let mut new_place = NewPlace {
+                let new_place = NewPlace {
                     name: business.name.clone().unwrap_or("".to_string()),
                     program_identifier: business.program_identifier
                         .clone()
@@ -228,28 +223,10 @@ impl Place {
             }
         }
     }
-    pub fn in_the_bounds(sw_long: f64,
-                         ne_long: f64,
-                         ne_lat: f64,
-                         sw_lat: f64,
-                         min: Option<i64>,
-                         max: Option<i64>)
-                         -> Vec<(Place, Vec<Inspection>)> {
-        let places = all_places.filter(places::longitude.ge(sw_long)
-                .and(places::longitude.le(ne_long))
-                .and(places::latitude.le(ne_lat))
-                .and(places::latitude.ge(sw_lat)))
-            .order(places::id.desc())
-            .load::<Place>(&db())
-            .unwrap();
-        let inspection_list = Inspection::belonging_to(&places).load::<Inspection>(&db()).unwrap();
-        let grouped = inspection_list.grouped_by(&places);
-        places.into_iter().zip(grouped).collect::<Vec<_>>()
-    }
 }
 
 
-#[derive(Debug,Display, Deserialize, PartialEq, Serialize)]
+#[derive(Debug, Deserialize, PartialEq, Serialize)]
 pub struct ViolationXml {
     #[serde(rename = "Violation_Type")]
     pub violation_type: Option<String>,
@@ -259,7 +236,7 @@ pub struct ViolationXml {
     pub violation_points: Option<String>,
 }
 
-#[derive(Debug,Display, Deserialize, PartialEq, Serialize)]
+#[derive(Debug, Deserialize, PartialEq, Serialize)]
 pub struct InspectionXml {
     #[serde(rename = "Inspection_Date")]
     pub inspection_date: Option<String>,
@@ -277,7 +254,7 @@ pub struct InspectionXml {
     pub violation: Option<Vec<ViolationXml>>,
 }
 
-#[derive(Debug, Display, Deserialize, PartialEq, Serialize)]
+#[derive(Debug,  Deserialize, PartialEq, Serialize)]
 pub struct BusinessXml {
     #[serde(rename = "Name")]
     pub name: Option<String>,
@@ -301,7 +278,7 @@ pub struct BusinessXml {
     #[serde(rename = "Inspection")]
     pub inspection: Option<Vec<InspectionXml>>,
 }
-#[derive(Debug,Display, Deserialize, PartialEq, Serialize)]
+#[derive(Debug, Deserialize, PartialEq, Serialize)]
 pub struct BusinessInspectionViolation {
     #[serde(rename = "Disclaimer")]
     pub disclaimer: Option<String>,
