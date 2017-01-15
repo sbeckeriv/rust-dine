@@ -8,6 +8,7 @@ const Container = React.createClass({
 
   getInitialState: function() {
     return {
+      selectedDetails: null,
       showingInfoWindow: false,
       activeInspection: null,
       activeMarker: {},
@@ -159,7 +160,23 @@ const Container = React.createClass({
       },
     ]});
   },
-
+  getDetails: function(place){
+    if(place){
+			var that=this;
+      var url = '/inspections?place_id='+place.id;
+      if(window.location.host.includes("localhost:3000")){
+        url = "http://localhost:8000"+url;
+      }
+      fetch(url)
+      .then(function(response) {
+        return response.json()
+      }).then(function(json) {
+        that.setState({selectedDetails: json.results[0]});
+      }).catch(function(ex) {
+        console.log('parsing failed', ex)
+      })
+    }
+  },
   getPlaces: function(mapProps, map) {
 			var bounds = map.getBounds();
 			var that=this;
@@ -202,7 +219,9 @@ const Container = React.createClass({
   },
 
   onMarkerClick: function(props, marker, e) {
+    this.getDetails(props.place);
     this.setState({
+      selectedDetails: null,
       selectedPlace: props,
       activeInspection: null,
       activeMarker: marker,
@@ -228,19 +247,19 @@ const Container = React.createClass({
     }
   },
 
-  getMarkerIcon: function(inspections){
-    var last = this.lastestInspection(inspections);
+  getMarkerIcon: function(place){
+    var last = place.most_recent_score;
     if(!last){
       //s3-us-west-2.amazonaws.com/rustdine
       return "//s3-us-west-2.amazonaws.com/rustdine/white.png";
     }
-    if(last.inspection_score==0){
+    if(last==0){
       return "//s3-us-west-2.amazonaws.com/rustdine/white.png"
     }
-    if(last.inspection_score<=20){
+    if(last<=20){
       return "//s3-us-west-2.amazonaws.com/rustdine/green.png"
     }
-    if(last.inspection_score<=50){
+    if(last<=50){
       return "//s3-us-west-2.amazonaws.com/rustdine/yellow.png"
     }
     return "//s3-us-west-2.amazonaws.com/rustdine/red.png"
@@ -287,45 +306,51 @@ const Container = React.createClass({
         );
       }
   },
+
   renderDetails: function(selectedPlace){
-    if(selectedPlace && !this.state.activeInspection){
-      var place = selectedPlace.place;
-      if(place){
-        var that = this;
-        var inspections = null;
-        var non_education = this.realInspections(place.inspections);
-        if(non_education[0]){
-          var non_education_sorted = _.sortBy(non_education, [function(o) { return o.inspected_at; }]).reverse();
-          inspections = non_education_sorted.map((inspection) =>{
-              var date = new Date(inspection.inspected_at);
-              return ([
-                <tr key={inspection.id}  style={{'textAlign': "left"}} >
-                  <td>{date.toLocaleDateString()}</td>
-                  <td>{inspection.inspection_score}</td>
-                </tr>,
-                <tr colSpan={2} key={"sub"+inspection.id}>
-                  <td>
-                    {that.renderInspectionDetails(inspection)}
-                  </td>
-                </tr>
-              ])
-            }
-          )
-        }
-        return (
-         <table  style={{'textAlign': "left"}} >
-            <thead>
-              <tr>
-                <th>Inspection Date</th>
-                <th>Total Score</th>
+    if(!selectedPlace){
+      return (
+        <div>
+          Loading...
+        </div>
+      )
+    }
+    var place = selectedPlace;
+    if(place){
+      var that = this;
+      var inspections = null;
+      var non_education = this.realInspections(place.inspections);
+      if(non_education[0]){
+        var non_education_sorted = _.sortBy(non_education, [function(o) { return o.inspected_at; }]).reverse();
+        inspections = non_education_sorted.map((inspection) =>{
+            var date = new Date(inspection.inspected_at);
+            return ([
+              <tr key={inspection.id}  style={{'textAlign': "left"}} >
+                <td>{date.toLocaleDateString()}</td>
+                <td>{inspection.inspection_score}</td>
+              </tr>,
+              <tr colSpan={2} key={"sub"+inspection.id}>
+                <td>
+                  {that.renderInspectionDetails(inspection)}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {inspections}
-            </tbody>
-          </table>
+            ])
+          }
         )
       }
+      return (
+       <table  style={{'textAlign': "left"}} >
+          <thead>
+            <tr>
+              <th>Inspection Date</th>
+              <th>Total Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            {inspections}
+          </tbody>
+        </table>
+      )
     }
   },
 
@@ -335,7 +360,7 @@ const Container = React.createClass({
     }
     var that = this;
     var markers = this.state.places.map((place,index) =>{
-          var icon = this.getMarkerIcon(place.inspections);
+          var icon = this.getMarkerIcon(place);
           var iconProps = {
               url: icon,
               anchor:new that.props.google.maps.Point(12,24),
@@ -367,7 +392,7 @@ const Container = React.createClass({
             visible={this.state.showingInfoWindow}>
               <div>
                 <h1>{this.state.selectedPlace.name}</h1>
-                {this.renderDetails(this.state.selectedPlace)}
+                {this.renderDetails(this.state.selectedDetails)}
               </div>
           </InfoWindow>
       </Map>

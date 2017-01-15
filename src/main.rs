@@ -65,6 +65,7 @@ struct InspectionJSON {
 struct PlaceDetailsJSON {
     pub inspections: Vec<InspectionJSON>,
     pub id: i32,
+    pub most_recent_score: i32,
     pub name: String,
     pub program_identifier: String,
     pub description: Option<String>,
@@ -78,20 +79,22 @@ struct PlacesJSON {
     status: i32,
     reason: Option<String>,
 }
-#[route(OPTIONS, "/location")]
-fn cors_preflight() -> cors::PreflightCORS {
+
+#[route(OPTIONS, "/inspections")]
+fn inspections_options() -> cors::PreflightCORS {
     cors::CORS::preflight("http://localhost")
         .methods(vec![Method::Options, Method::Get])
         .headers(vec!["Content-Type"])
 }
-#[get("/location?<lat_long>")]
-fn location(lat_long: LatLongParams) -> cors::CORS<JSON<PlacesJSON>> {
-    let places = models::Place::in_the_bounds(lat_long.sw_long,
-                                              lat_long.ne_long,
-                                              lat_long.ne_lat,
-                                              lat_long.sw_lat,
-                                              lat_long.min,
-                                              lat_long.max);
+
+#[derive(FromForm)]
+struct InspectionParams {
+    place_id: i32,
+}
+
+#[get("/inspections?<inspection_params>")]
+fn inspections(inspection_params: InspectionParams) -> cors::CORS<JSON<PlacesJSON>> {
+    let places = models::Place::find_and_load(inspection_params.place_id);
     let json = places.iter()
         .map(|record| {
             let ref place = record.0;
@@ -113,6 +116,63 @@ fn location(lat_long: LatLongParams) -> cors::CORS<JSON<PlacesJSON>> {
                 .collect();
             PlaceDetailsJSON {
                 inspections: inspections_json,
+                most_recent_score: -1,
+                id: place.id,
+                name: place.name.clone(),
+                program_identifier: place.program_identifier.clone(),
+                description: place.description.clone(),
+                longitude: place.longitude,
+                latitude: place.latitude,
+            }
+        })
+        .collect();
+    let data = PlacesJSON {
+        results: json,
+        status: 300,
+        reason: None,
+    };
+    cors::CORS::any(JSON(data))
+
+}
+
+#[route(OPTIONS, "/location")]
+fn cors_preflight() -> cors::PreflightCORS {
+    cors::CORS::preflight("http://localhost")
+        .methods(vec![Method::Options, Method::Get])
+        .headers(vec!["Content-Type"])
+}
+
+#[get("/location?<lat_long>")]
+fn location(lat_long: LatLongParams) -> cors::CORS<JSON<PlacesJSON>> {
+    let places = models::Place::in_the_bounds(lat_long.sw_long,
+                                              lat_long.ne_long,
+                                              lat_long.ne_lat,
+                                              lat_long.sw_lat,
+                                              lat_long.min,
+                                              lat_long.max);
+    let json = places.iter()
+        .map(|record| {
+            let ref place = record.0;
+            let ref inspections: Vec<models::Inspection> = record.1;
+            let mut last_score = -1;
+            // is this better then a db hit per object? should have db cache it
+            let mut filtered_inspection: Vec<(NaiveDateTime, i32)> = inspections.iter()
+                .filter_map(|&ref x: &models::Inspection| {
+                    if !x.is_educational() {
+                        Some((x.inspected_at.clone(), x.inspection_score))
+                    } else {
+                        None
+                    }
+                })
+                .collect();
+            filtered_inspection.sort_by(|a, b| b.0.cmp(&a.0));
+            if let Some(x) = filtered_inspection.first() {
+                last_score = x.1;
+            }
+
+            PlaceDetailsJSON {
+                inspections: vec![],
+                most_recent_score: last_score,
                 id: place.id,
                 name: place.name.clone(),
                 program_identifier: place.program_identifier.clone(),
@@ -134,6 +194,11 @@ fn location(lat_long: LatLongParams) -> cors::CORS<JSON<PlacesJSON>> {
 fn main() {
     rocket::ignite()
         .mount("/",
-               routes![index, location, cors_preflight, static_files::all])
+               routes![index,
+                       location,
+                       cors_preflight,
+                       inspections,
+                       inspections_options,
+                       static_files::all])
         .launch();
 }

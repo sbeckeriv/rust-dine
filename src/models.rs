@@ -73,6 +73,10 @@ impl Inspection {
             .load::<Inspection>(local_db)
             .unwrap()
     }
+
+    pub fn is_educational(&self) -> bool {
+        self.inspection_type.contains("education")
+    }
 }
 
 #[derive(Serialize,Associations, Identifiable, Deserialize, Queryable, Debug, Clone)]
@@ -89,18 +93,9 @@ pub struct Place {
     pub latitude: f64,
 }
 impl Place {
-    pub fn in_the_bounds(sw_long: f64,
-                         ne_long: f64,
-                         ne_lat: f64,
-                         sw_lat: f64,
-                         min: Option<i64>,
-                         max: Option<i64>)
-                         -> Vec<(Place, Vec<(Inspection, Vec<Violation>)>)> {
+    pub fn find_and_load(id: i32) -> Vec<(Place, Vec<(Inspection, Vec<Violation>)>)> {
         let ref local_db = *DB_POOL.get().unwrap();
-        let places = all_places.filter(places::longitude.ge(sw_long)
-                .and(places::longitude.le(ne_long))
-                .and(places::latitude.le(ne_lat))
-                .and(places::latitude.ge(sw_lat)))
+        let places = all_places.filter(places::id.eq(id))
             .order(places::id.desc())
             .load::<Place>(local_db)
             .unwrap();
@@ -112,5 +107,26 @@ impl Place {
         let results: Vec<(Place, Vec<(Inspection, Vec<Violation>)>)> =
             places.into_iter().zip(inspections_and_violiations).collect();
         results
+    }
+
+    pub fn in_the_bounds(sw_long: f64,
+                         ne_long: f64,
+                         ne_lat: f64,
+                         sw_lat: f64,
+                         min: Option<i64>,
+                         max: Option<i64>)
+                         -> Vec<(Place, Vec<Inspection>)> {
+        let ref local_db = *DB_POOL.get().unwrap();
+        let places = all_places.filter(places::longitude.ge(sw_long)
+                .and(places::longitude.le(ne_long))
+                .and(places::latitude.le(ne_lat))
+                .and(places::latitude.ge(sw_lat)))
+            .order(places::id.desc())
+            .load::<Place>(local_db)
+            .unwrap();
+        let inspection_list =
+            Inspection::belonging_to(&places).load::<Inspection>(local_db).unwrap();
+        let grouped = inspection_list.grouped_by(&places);
+        places.into_iter().zip(grouped).collect::<Vec<_>>()
     }
 }
