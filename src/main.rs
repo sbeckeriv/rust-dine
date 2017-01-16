@@ -116,7 +116,7 @@ fn inspections(inspection_params: InspectionParams) -> cors::CORS<JSON<PlacesJSO
                 .collect();
             PlaceDetailsJSON {
                 inspections: inspections_json,
-                most_recent_score: -1,
+                most_recent_score: 0,
                 id: place.id,
                 name: place.name.clone(),
                 program_identifier: place.program_identifier.clone(),
@@ -153,26 +153,10 @@ fn location(lat_long: LatLongParams) -> cors::CORS<JSON<PlacesJSON>> {
     let json = places.iter()
         .map(|record| {
             let ref place = record.0;
-            let ref inspections: Vec<models::Inspection> = record.1;
-            let mut last_score = -1;
-            // is this better then a db hit per object? should have db cache it
-            let mut filtered_inspection: Vec<(NaiveDateTime, i32)> = inspections.iter()
-                .filter_map(|&ref x: &models::Inspection| {
-                    if !x.is_educational() {
-                        Some((x.inspected_at.clone(), x.inspection_score))
-                    } else {
-                        None
-                    }
-                })
-                .collect();
-            filtered_inspection.sort_by(|a, b| b.0.cmp(&a.0));
-            if let Some(x) = filtered_inspection.first() {
-                last_score = x.1;
-            }
 
             PlaceDetailsJSON {
                 inspections: vec![],
-                most_recent_score: last_score,
+                most_recent_score: place.most_recent_score.clone().unwrap_or(0),
                 id: place.id,
                 name: place.name.clone(),
                 program_identifier: place.program_identifier.clone(),

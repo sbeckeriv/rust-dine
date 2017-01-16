@@ -45,8 +45,6 @@ fn from_str(path: Option<String>) -> Result<models::BusinessInspectionViolation,
                               now.year());
 
             println!("starting download: {}", url);
-
-
             let mut dst = Vec::new();
             {
                 let mut handle = Easy::new();
@@ -97,7 +95,10 @@ fn main() {
                                 }
                             }
                         }
+
                     }
+                    let last_inspection_score = models::Inspection::find_most_recent_real_inspection_score(business.id);
+                    business.update_last_score(last_inspection_score);
                     2
                 })
                 .collect::<Vec<i32>>();

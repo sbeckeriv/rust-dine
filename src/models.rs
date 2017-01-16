@@ -91,6 +91,7 @@ pub struct Place {
     pub address: String,
     pub longitude: f64,
     pub latitude: f64,
+    pub most_recent_score: Option<i32>,
 }
 impl Place {
     pub fn find_and_load(id: i32) -> Vec<(Place, Vec<(Inspection, Vec<Violation>)>)> {

@@ -1,4 +1,5 @@
 use diesel;
+use diesel::result::Error;
 use diesel::prelude::*;
 use diesel::pg::PgConnection;
 use chrono::{NaiveDate, NaiveDateTime};
@@ -110,6 +111,17 @@ pub struct Inspection {
 }
 
 impl Inspection {
+    pub fn find_most_recent_real_inspection_score(place_id: i32) -> Option<i32> {
+
+        let inspection = all_inspections.filter(inspections::place_id.eq(place_id)
+                .and(inspections::inspection_type.not_like("%education%")))
+            .order(inspections::inspected_at.desc())
+            .first::<Inspection>(&db());
+        match inspection {
+            Ok(inspection) => Some(inspection.inspection_score),
+            Error => None,
+        }
+    }
     pub fn find_from_xml(place_id: i32, inspection_date: &NaiveDateTime) -> Option<Inspection> {
         all_inspections.filter(inspections::inspected_at.eq(inspection_date)
                 .clone()
@@ -165,6 +177,7 @@ pub struct NewPlace {
     pub address: String,
     pub longitude: f64,
     pub latitude: f64,
+    pub most_recent_score: Option<i32>,
 }
 impl NewPlace {
     pub fn insert(&self) -> Option<Place> {
@@ -184,8 +197,15 @@ pub struct Place {
     pub address: String,
     pub longitude: f64,
     pub latitude: f64,
+    pub most_recent_score: Option<i32>,
 }
 impl Place {
+    pub fn update_last_score(&self, score: Option<i32>) -> () {
+        diesel::update(all_places.find(self.id))
+            .set(places::most_recent_score.eq(score))
+            .get_result::<Place>(&db())
+            .ok();
+    }
     pub fn find_from_xml(business: &BusinessXml) -> Option<Place> {
         all_places.filter(places::address.eq(business.address.clone().unwrap_or("".to_string()))
                 .and(places::name.eq(business.name.clone().unwrap_or("".to_string()))))
@@ -218,6 +238,7 @@ impl Place {
                     address: business.address.clone().unwrap_or("".to_string()),
                     longitude: long,
                     latitude: lat,
+                    most_recent_score: None,
                 };
                 new_place.insert().unwrap()
             }
