@@ -35,10 +35,8 @@ parse the xml file and create records:
 ## Deploy
 
 `cd frontend3`
-`npm run build`
-`cp build/static/js/main.<hash>.js.map ../public/static/js/main.js.map`
-`cp build/static/js/main.<hash>.js ../public/static/js/main.js`
-`cp  build/static/css/main.<hash.css ../public/static/css/main.css`
+`./build.sh`
+`cd ..`
 `git commit . -m "new assets"`
 `git commit push`
 
