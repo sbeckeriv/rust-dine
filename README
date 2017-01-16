@@ -46,7 +46,10 @@ parse the xml file and create records:
 aws ec2
 `ssh to box`
 `sudo su`
-`yum install git gcc postgres<something devl> sqlite-<dev something> openssl*`
+`yum install git gcc postgres<something devl> sqlite-<dev something> openssl* nginx`
+// or install nginx from scratch http://www.augustkleimo.com/build-and-install-nginx-from-source-on-amazon-ec2-linux/
+`chkconfig httpd on`
+`vi vi /etc/nginx/nginx.conf`
 install rustup and run commands above both as root and ec2-user
 `git clone `
 `cd rust-dine`

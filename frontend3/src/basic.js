@@ -201,6 +201,7 @@ const Container = React.createClass({
 					that.getPlaces(mapProps, map)
 				},1000)
 			}
+
   },
 
   onMapMoved: function(props, map) {
@@ -211,7 +212,6 @@ const Container = React.createClass({
   onDetailsClick: function(e){
     e.preventDefault();
     console.log('The link was clicked.');
-    debugger
   },
 
   onDetailsRemove: function(){
@@ -382,7 +382,8 @@ const Container = React.createClass({
           containerStyle={{}}
           centerAroundCurrentLocation={true}
           onClick={this.onMapClicked}
-          onDragend={this.onMapMoved}>
+          onDragend={this.onMapMoved}
+          onZoom_changed={this.onMapMoved}>
 
           {markers}
 
