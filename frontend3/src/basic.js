@@ -55,10 +55,14 @@ const MapContainer = React.createClass({
 			if (bounds) {
 					var sw = bounds.getSouthWest();
 					var ne = bounds.getNorthEast();
-
+          var min = that.state.scoreFilter[0];
+          var max = that.state.scoreFilter[1];
+          if(mapProps.scoreFilter){
+              min = mapProps.scoreFilter[0];
+              max = mapProps.scoreFilter[1];
+          }
 					var url = '/location?sw_lat=' + sw.lat() + "&sw_long=" + sw.lng() + '&ne_lat=' +
-            ne.lat() + "&ne_long=" + ne.lng()+"&min="+
-              that.state.scoreFilter[0]+"&max="+that.state.scoreFilter[1];
+            ne.lat() + "&ne_long=" + ne.lng()+"&min="+min+"&max="+max;
           if(window.location.host.includes("localhost:3000")){
             url = "http://localhost:8000"+url;
           }
@@ -242,7 +246,7 @@ const MapContainer = React.createClass({
 
   updateFilter: function(e) {
     this.setState({scoreFilter: e});
-    this.getPlaces({},{});
+    this.getPlaces({scoreFilter: e},{});
   },
 
   onSubmit: function(e) {
@@ -283,7 +287,7 @@ const MapContainer = React.createClass({
               </form>
             </Col>
             <Col sm={4}>
-              <Slider range allowCross={false} defaultValue={this.state.scoreFilter} onAfterChange={this.updateFilter} max={300} />
+              <Slider range allowCross={false} defaultValue={[0,300]} onAfterChange={this.updateFilter} max={300} />
               <span>Score Filter</span>
             </Col>
           </Row>
