@@ -6,6 +6,7 @@
     <meta content="Tool to quickly check health deparment inspections. In map form. " name="description"/>
     <meta content="Food Inspection,Seattle,restaurants,rating,map" name="keywords"/>
     <link href="static/css/main.css" rel="stylesheet"></link>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
     <title>Food Inspection Map</title>
   </head>
   <body>

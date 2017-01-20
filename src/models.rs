@@ -114,14 +114,17 @@ impl Place {
                          ne_long: f64,
                          ne_lat: f64,
                          sw_lat: f64,
-                         min: Option<i64>,
-                         max: Option<i64>)
+                         min: Option<i32>,
+                         max: Option<i32>)
                          -> Vec<(Place, Vec<Inspection>)> {
         let ref local_db = *DB_POOL.get().unwrap();
-        let places = all_places.filter(places::longitude.ge(sw_long)
-                .and(places::longitude.le(ne_long))
-                .and(places::latitude.le(ne_lat))
-                .and(places::latitude.ge(sw_lat)))
+        let mut chain = places::longitude.ge(sw_long)
+            .and(places::longitude.le(ne_long))
+            .and(places::latitude.le(ne_lat))
+            .and(places::latitude.ge(sw_lat))
+            .and(places::most_recent_score.ge(min.unwrap_or(0)))
+            .and(places::most_recent_score.le(max.unwrap_or(300)));
+        let places = all_places.filter(chain)
             .order(places::id.desc())
             .load::<Place>(local_db)
             .unwrap();

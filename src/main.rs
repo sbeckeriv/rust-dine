@@ -46,8 +46,8 @@ struct LatLongParams {
     ne_long: f64,
     ne_lat: f64,
     sw_lat: f64,
-    min: Option<i64>,
-    max: Option<i64>,
+    min: Option<i32>,
+    max: Option<i32>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

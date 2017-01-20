@@ -2,17 +2,22 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import _ from 'lodash'
 import Map, {Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react'
+import { Grid, Row, Col} from 'react-bootstrap';
 import 'whatwg-fetch'
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css';
 
-const Container = React.createClass({
+const MapContainer = React.createClass({
 
   getInitialState: function() {
     return {
+      map: null,
       selectedDetails: null,
       showingInfoWindow: false,
       activeInspection: null,
       activeMarker: {},
       selectedPlace: {place:{}, inspections:[]},
+      scoreFilter: [0, 300],
       places: [],
     }
   },
@@ -36,18 +41,24 @@ const Container = React.createClass({
   },
 
   onReady: function(mapProps, map){
+      this.setState({map: map});
       this.renderAutoComplete(map);
-      this.getPlaces(mapProps,map);
+      this.getPlaces(mapProps, map);
   },
 
   getPlaces: function(mapProps, map) {
-			var bounds = map.getBounds();
+      if(!this.state.map){
+        return;
+      }
+			var bounds = this.state.map.getBounds();
 			var that=this;
 			if (bounds) {
 					var sw = bounds.getSouthWest();
 					var ne = bounds.getNorthEast();
 
-					var url = '/location?sw_lat=' + sw.lat() + "&sw_long=" + sw.lng() + '&ne_lat=' + ne.lat() + "&ne_long=" + ne.lng();
+					var url = '/location?sw_lat=' + sw.lat() + "&sw_long=" + sw.lng() + '&ne_lat=' +
+            ne.lat() + "&ne_long=" + ne.lng()+"&min="+
+              that.state.scoreFilter[0]+"&max="+that.state.scoreFilter[1];
           if(window.location.host.includes("localhost:3000")){
             url = "http://localhost:8000"+url;
           }
@@ -229,6 +240,11 @@ const Container = React.createClass({
     })
   },
 
+  updateFilter: function(e) {
+    this.setState({scoreFilter: e});
+    this.getPlaces({},{});
+  },
+
   onSubmit: function(e) {
     e.preventDefault();
   },
@@ -252,51 +268,60 @@ const Container = React.createClass({
     );
 
     return (
-      <div>
-        <div style={{height:"30px" }}>
-          <form id='googleAuto'  onSubmit={this.onSubmit}>
-            <input
-              ref='autocomplete'
-              style={{maxWidth:"200px"}}
-              type="text"
-              placeholder="Enter a location" />
-            <input
-              className='button'
-              type='submit'
-              value='Go' />
-          </form>
-        </div>
-        <div>
-          <Map google={this.props.google}
-              onReady={this.onReady}
-              initialCenter={{lat: 47.6792, lng: -122.3860}}
-              style={{zIndex:1, width: '100%', height: '100%', position: 'relative'}}
-              className={'map'}
-              zoom={14}
-              containerStyle={{}}
-              centerAroundCurrentLocation={true}
-              onClick={this.onMapClicked}
-              onDragend={this.onMapMoved}
-              onZoom_changed={this.onMapMoved}>
+        <Grid fluid={true}>
+          <Row>
+            <Col sm={3} >
+              <form id='googleAuto'  onSubmit={this.onSubmit}>
+                <input
+                  ref='autocomplete'
+                  type="text"
+                  placeholder="Enter a location" />
+                <input
+                  className='button'
+                  type='submit'
+                  value='Go' />
+              </form>
+            </Col>
+            <Col sm={4}>
+              <Slider range allowCross={false} defaultValue={this.state.scoreFilter} onAfterChange={this.updateFilter} max={300} />
+              <span>Score Filter</span>
+            </Col>
+          </Row>
+          <Row >
+            <Col xl={12} >
+              <div>
+                <Map google={this.props.google}
+                    onReady={this.onReady}
+                    initialCenter={{lat: 47.6792, lng: -122.3860}}
+                    //style={{zIndex:1, width: '100%', height: '100%', position: 'relative'}}
+                    className={'map'}
+                    zoom={14}
+                    containerStyle={{}}
+                    centerAroundCurrentLocation={true}
+                    onClick={this.onMapClicked}
+                    onDragend={this.onMapMoved}
+                    onZoom_changed={this.onMapMoved}>
 
-              {markers}
+                    {markers}
 
-              <InfoWindow
-                onClicked={this.onDetailsClick}
-                marker={this.state.activeMarker}
-                visible={this.state.showingInfoWindow}>
-                  <div>
-                    <h1>{this.state.selectedPlace.name}</h1>
-                    {this.renderDetails(this.state.selectedDetails)}
-                  </div>
-              </InfoWindow>
-          </Map>
-        </div>
-      </div>
+                    <InfoWindow
+                      onClicked={this.onDetailsClick}
+                      marker={this.state.activeMarker}
+                      visible={this.state.showingInfoWindow}>
+                        <div>
+                          <h1>{this.state.selectedPlace.name}</h1>
+                          {this.renderDetails(this.state.selectedDetails)}
+                        </div>
+                    </InfoWindow>
+                </Map>
+              </div>
+            </Col>
+          </Row>
+        </Grid>
     )
   }
 });
 
 export default GoogleApiWrapper({
     apiKey: "AIzaSyA5kAo4Vu1NqICHHrSIV2ZESxdqb4qdceg"
-})(Container)
+})(MapContainer)
