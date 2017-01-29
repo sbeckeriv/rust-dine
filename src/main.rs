@@ -1,15 +1,16 @@
 #![feature(plugin, custom_derive)]
 #![plugin(rocket_codegen)]
-extern crate rocket;
-extern crate rocket_contrib;
-extern crate serde_json;
-extern crate chrono;
-extern crate dotenv;
-extern crate postgres;
-extern crate r2d2;
-extern crate r2d2_postgres;
-extern crate r2d2_diesel;
-extern crate tera;
+macro_rules! externs {
+    ( $( $x:ident ),* ) => {
+        $(
+            extern crate $x;
+        )*
+    };
+}
+
+externs![rocket, rocket_contrib, serde_json, chrono,
+    dotenv, postgres, r2d2, r2d2_postgres,
+    r2d2_diesel, tera,  toml, glob];
 #[macro_use]
 extern crate diesel;
 #[macro_use]
@@ -27,6 +28,7 @@ mod schema;
 mod models;
 mod cors;
 mod static_files;
+mod assets;
 
 #[derive(Serialize)]
 struct TemplateContext {

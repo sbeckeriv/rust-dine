@@ -1,0 +1,12 @@
+[[files]]
+  path = "static/js/main.js"
+  watch = ["/Users/becker/trash/dine/frontend3/src/**/*.js"]
+  commands = ["/Users/becker/trash/dine/frontend3", './build.sh']
+[[files]]
+  path = "static/css/main.css"
+  watch = ["/Users/becker/trash/dine/frontend3/src/**/*.css"]
+  commands = ["/Users/becker/trash/dine/frontend3", './build.sh']
+[[types]]
+  extention = 'pdf'
+  command = ''
+

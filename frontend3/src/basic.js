@@ -8,7 +8,6 @@ import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css';
 
 const MapContainer = React.createClass({
-
   getInitialState: function() {
     return {
       map: null,
